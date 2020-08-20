@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.jhw.gestion.modules.gastos'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+allprojects{
+    gradle.projectsEvaluated{
+        tasks.withType(JavaCompile){
+            //options.compilerArgs << "-Xlint:deprecation"
+            //options.compilerArgs << "-Xlint:unchecked"
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+
+    implementation project(':utils')
+    implementation project(':clean-core')
+    implementation project(':clean-swing')
+    
+    implementation project(':derivable-icons')
+    implementation project(':material-standards')
+    implementation project(':material-personalization')
+    implementation project(':material-swing')
+    implementation project(':material-notification')    
+    implementation project(':material-chart')
+    implementation project(':material-model')
+    
+    implementation project(':module-default-config')
+    implementation project(':module-licence')
+    implementation project(':module-mysql')
+    
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+    
+    //EclipseLink
+    compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.7.6'
+    compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.6'
+    
+    //injection
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+}
