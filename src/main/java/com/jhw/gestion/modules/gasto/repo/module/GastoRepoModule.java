@@ -6,7 +6,7 @@ import com.google.inject.Injector;
 import com.jhw.gestion.modules.gasto.repo.utils.Resources;
 
 /**
- * Modulo de contabilidad-repo.
+ * Modulo de gasto-repo.
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
@@ -22,7 +22,7 @@ public class GastoRepoModule extends DefaultAbstractModule {
 
     public static GastoRepoModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Contabilidad no se ha inicializado");
+            throw new NullPointerException("El modulo de gastos no se ha inicializado");
         }
         return INSTANCE;
     }
@@ -39,7 +39,7 @@ public class GastoRepoModule extends DefaultAbstractModule {
 
     @Override
     public String getModuleName() {
-        return "Contabilidad Repo Module";
+        return "Gasto Repo Module";
     }
 
 }

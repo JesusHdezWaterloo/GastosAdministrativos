@@ -2,21 +2,13 @@ plugins {
     id 'java'
 }
 
-group = 'com.jhw.gestion.modules.gastos'
+group = 'com.jhw.gestion.modules.gasto'
 
 repositories {
     jcenter()
     mavenCentral()
 }
 
-allprojects{
-    gradle.projectsEvaluated{
-        tasks.withType(JavaCompile){
-            //options.compilerArgs << "-Xlint:deprecation"
-            //options.compilerArgs << "-Xlint:unchecked"
-        }
-    }
-}
 
 dependencies {
     testImplementation 'junit:junit:4.13'
@@ -36,6 +28,8 @@ dependencies {
     implementation project(':module-default-config')
     implementation project(':module-licence')
     implementation project(':module-mysql')
+    
+    implementation project(':module-contabilidad')
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     

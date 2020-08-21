@@ -19,7 +19,7 @@ public class Resources {
 
     public static void initEMF() {
         try {
-            EMF = Persistence.createEntityManagerFactory("ContabilidadPU", MySQLHandler.propertiesMap());
+            EMF = Persistence.createEntityManagerFactory("GastoPU", MySQLHandler.propertiesMap());
         } catch (Exception e) {
             e.printStackTrace();
         }
