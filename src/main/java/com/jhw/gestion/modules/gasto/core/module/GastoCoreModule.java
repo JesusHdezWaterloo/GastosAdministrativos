@@ -6,7 +6,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
- * Modulo de contabilidad-core.
+ * Modulo de gasto-core.
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
@@ -18,7 +18,7 @@ public class GastoCoreModule extends DefaultAbstractModule {
 
     public static GastoCoreModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Contabilidad no se ha inicializado");
+            throw new NullPointerException("El modulo de gastos no se ha inicializado");
         }
         return INSTANCE;
     }
@@ -36,7 +36,7 @@ public class GastoCoreModule extends DefaultAbstractModule {
 
     @Override
     public String getModuleName() {
-        return "Contabilidad Core Module";
+        return "Gasto Core Module";
     }
 
 }

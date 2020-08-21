@@ -2,9 +2,11 @@ package com.jhw.gestion.modules.gasto.core.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
+import com.jhw.gestion.modules.gasto.core.usecase_def.*;
+import com.jhw.gestion.modules.gasto.core.usecase_impl.*;
 
 /**
- * Configuracion del injection del modulo de job-core.
+ * Configuracion del injection del modulo de gasto-core.
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
@@ -12,7 +14,8 @@ public class GastoCoreInjectionConfig extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(TitularUseCase.class).to(TitularUseCaseImpl.class).in(Singleton.class);
+        bind(GastoUseCase.class).to(GastoUseCaseImpl.class).in(Singleton.class);
+        bind(TipoGastoUseCase.class).to(TipoGastoUseCaseImpl.class).in(Singleton.class);
     }
 
 }

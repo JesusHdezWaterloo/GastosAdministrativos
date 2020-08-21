@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="ContabilidadPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="GastoPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.Subcuenta</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.InfoOperacionContable</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.CuentaBancaria</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.TipoOperacionContable</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.TipoCuenta</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.Moneda</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.FormaPago</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.Cuadre</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.CuentaContable</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.OperacionContable</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.Liquidacion</class>
-    <class>com.jhw.gestion.modules.gasto.repo.entities.Titular</class>
+    <class>com.jhw.gestion.modules.gasto.repo.entities.Gasto</class>
+    <class>com.jhw.gestion.modules.gasto.repo.entities.TipoGasto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_db?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

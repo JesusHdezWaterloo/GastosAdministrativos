@@ -18,3 +18,7 @@ project(':material-model').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gr
 project(':module-default-config').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\DefaultConfiguration" as File
 project(':module-licence').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\Licence" as File
 project(':module-mysql').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\MySQL" as File
+
+include ':module-contabilidad'
+
+project(':module-contabilidad').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Gestion\\Contabilidad Empresarial" as File
