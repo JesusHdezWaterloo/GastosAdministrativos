@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class Resources {
+public class ResourcesGastos {
 
     public static EntityManagerFactory EMF;
 

@@ -3,7 +3,7 @@ package com.jhw.gestion.modules.gasto.repo.module;
 import com.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.jhw.gestion.modules.gasto.repo.utils.Resources;
+import com.jhw.gestion.modules.gasto.repo.utils.ResourcesGastos;
 
 /**
  * Modulo de gasto-repo.
@@ -17,7 +17,7 @@ public class GastoRepoModule extends DefaultAbstractModule {
     private static GastoRepoModule INSTANCE;
 
     private GastoRepoModule() {
-        Resources.initEMF();
+        ResourcesGastos.initEMF();
     }
 
     public static GastoRepoModule getInstance() {
