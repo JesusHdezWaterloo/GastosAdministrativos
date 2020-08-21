@@ -6,9 +6,8 @@
 package com.jhw.gestion.modules.gasto.core.domain;
 
 import com.clean.core.utils.SortBy;
+import com.jhw.gestion.modules.contabilidad.core.domain.*;
 import javax.validation.constraints.NotNull;
-import com.jhw.gestion.modules.contabilidad.repo.entities.Cuadre;
-import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
 import com.jhw.utils.clean.EntityDomainObjectValidated;
 import javax.validation.constraints.PositiveOrZero;
 
@@ -25,10 +24,10 @@ public class GastoDomain extends EntityDomainObjectValidated {
     private double valor;
 
     @NotNull(message = "#msg.module.gasto.validation.gasto_cuadre_null#")
-    private Cuadre cuadreFk;
+    private CuadreDomain cuadreFk;
 
     @NotNull(message = "#msg.module.gasto.validation.gasto_moneda_null#")
-    private Moneda monedaFk;
+    private MonedaDomain monedaFk;
 
     @NotNull(message = "#msg.module.gasto.validation.gasto_tipo_null#")
     private TipoGastoDomain tipoGastoFk;
@@ -40,11 +39,12 @@ public class GastoDomain extends EntityDomainObjectValidated {
         this.idGasto = idGasto;
     }
 
-    public GastoDomain(double valor, Cuadre cuadreFk, Moneda monedaFk, TipoGastoDomain tipoGastoFk) {
+    public GastoDomain(double valor, CuadreDomain cuadreFk, MonedaDomain monedaFk, TipoGastoDomain tipoGastoFk) {
         this.valor = valor;
         this.cuadreFk = cuadreFk;
         this.monedaFk = monedaFk;
         this.tipoGastoFk = tipoGastoFk;
+        validate();
     }
 
     public Integer getIdGasto() {
@@ -63,19 +63,19 @@ public class GastoDomain extends EntityDomainObjectValidated {
         this.valor = valor;
     }
 
-    public Cuadre getCuadreFk() {
+    public CuadreDomain getCuadreFk() {
         return cuadreFk;
     }
 
-    public void setCuadreFk(Cuadre cuadreFk) {
+    public void setCuadreFk(CuadreDomain cuadreFk) {
         this.cuadreFk = cuadreFk;
     }
 
-    public Moneda getMonedaFk() {
+    public MonedaDomain getMonedaFk() {
         return monedaFk;
     }
 
-    public void setMonedaFk(Moneda monedaFk) {
+    public void setMonedaFk(MonedaDomain monedaFk) {
         this.monedaFk = monedaFk;
     }
 

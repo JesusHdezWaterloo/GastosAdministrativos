@@ -6,8 +6,7 @@
 package com.jhw.gestion.modules.gasto.core.domain;
 
 import com.clean.core.utils.SortBy;
-import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
-import com.jhw.gestion.modules.contabilidad.repo.entities.TipoOperacionContable;
+import com.jhw.gestion.modules.contabilidad.core.domain.*;
 import com.jhw.utils.clean.EntityDomainObjectValidated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -30,10 +29,12 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
     private String descripcion;
 
     @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_moneda_null#")
-    private Moneda monedaDefectoFk;
+    private MonedaDomain monedaDefectoFk;
 
     @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_operacion_null#")
-    private TipoOperacionContable tipoOperacionContableDefectoFk;
+    private TipoOperacionContableDomain tipoOperacionContableDefectoFk;
+
+    private FormaPagoDomain formaPagoFk;
 
     public TipoGastoDomain() {
     }
@@ -42,11 +43,21 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         this.idTipoGasto = idTipoGasto;
     }
 
-    public TipoGastoDomain(String nombreGasto, String descripcion, Moneda monedaDefectoFk, TipoOperacionContable tipoOperacionContableDefectoFk) {
+    public TipoGastoDomain(String nombreGasto, String descripcion, MonedaDomain monedaDefectoFk, TipoOperacionContableDomain tipoOperacionContableDefectoFk, FormaPagoDomain formaPagoFk) {
         this.nombreGasto = nombreGasto;
         this.descripcion = descripcion;
         this.monedaDefectoFk = monedaDefectoFk;
         this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
+        this.formaPagoFk = formaPagoFk;
+        validate();
+    }
+
+    public FormaPagoDomain getFormaPagoFk() {
+        return formaPagoFk;
+    }
+
+    public void setFormaPagoFk(FormaPagoDomain formaPagoFk) {
+        this.formaPagoFk = formaPagoFk;
     }
 
     public Integer getIdTipoGasto() {
@@ -73,19 +84,19 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         this.descripcion = descripcion;
     }
 
-    public Moneda getMonedaDefectoFk() {
+    public MonedaDomain getMonedaDefectoFk() {
         return monedaDefectoFk;
     }
 
-    public void setMonedaDefectoFk(Moneda monedaDefectoFk) {
+    public void setMonedaDefectoFk(MonedaDomain monedaDefectoFk) {
         this.monedaDefectoFk = monedaDefectoFk;
     }
 
-    public TipoOperacionContable getTipoOperacionContableDefectoFk() {
+    public TipoOperacionContableDomain getTipoOperacionContableDefectoFk() {
         return tipoOperacionContableDefectoFk;
     }
 
-    public void setTipoOperacionContableDefectoFk(TipoOperacionContable tipoOperacionContableDefectoFk) {
+    public void setTipoOperacionContableDefectoFk(TipoOperacionContableDomain tipoOperacionContableDefectoFk) {
         this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
     }
 
