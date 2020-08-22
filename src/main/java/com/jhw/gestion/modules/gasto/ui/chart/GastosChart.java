@@ -24,7 +24,7 @@ public class GastosChart extends _MaterialBarChart implements Update {
     @Override
     public void update() {
         removeAllBars();
-        
+
         /*for (TipoGastoDomain tipo : GastoSwingModule.tipoGastoUC.findAll()) {
             addCategory(tipo.getNombreGasto(), MaterialColors.AMBER_400);
         }

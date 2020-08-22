@@ -27,7 +27,7 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
     private static final String COL_GASTO = "Gasto";
     private static final String COL_VALOR = "Valor";
     private static final String COL_FECHA = "Fecha";
-    private static final String COL_CUADRE = "Cuadre";
+    //private static final String COL_CUADRE = "Cuadre";
     private static final String COL_CUENTA = "Cuenta";
 
     public GastoDetailView() {
@@ -35,7 +35,7 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
                 Column.builder().name(COL_GASTO).build(),
                 Column.builder().name(COL_VALOR).build(),
                 Column.builder().name(COL_FECHA).build(),
-                Column.builder().name(COL_CUADRE).build(),
+                //Column.builder().name(COL_CUADRE).build(),
                 Column.builder().name(COL_CUENTA).build()
         );
 
@@ -65,7 +65,7 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
     @Override
     public Object[] getRowObject(GastoDomain obj) {
         return new Object[]{
-            obj.getCuadreFk().info().getNombre(),
+            obj.getTipoGastoFk(),
             MoneyTableComponent.from(obj.getValor(), obj.getMonedaFk()),
             SDF.format(obj.getCuadreFk().info().getFecha()),
             obj.getCuadreFk().getOperacionContableFk().getCuentaFk()};

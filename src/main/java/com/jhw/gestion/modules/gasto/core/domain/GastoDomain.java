@@ -109,7 +109,7 @@ public class GastoDomain extends EntityDomainObjectValidated {
 
     @Override
     public String toString() {
-        return "com.jhw.gestion.modules.gasto.repo.entities.Gasto[ idGasto=" + idGasto + " ]";
+        return cuadreFk.info().getNombre();
     }
 
 }
