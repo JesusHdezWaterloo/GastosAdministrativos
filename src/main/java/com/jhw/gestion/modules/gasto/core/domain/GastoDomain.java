@@ -5,7 +5,6 @@
  */
 package com.jhw.gestion.modules.gasto.core.domain;
 
-import com.clean.core.utils.SortBy;
 import com.jhw.gestion.modules.contabilidad.core.domain.*;
 import javax.validation.constraints.NotNull;
 import com.jhw.utils.clean.EntityDomainObjectValidated;
@@ -15,7 +14,7 @@ import javax.validation.constraints.PositiveOrZero;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class GastoDomain extends EntityDomainObjectValidated {
+public class GastoDomain extends EntityDomainObjectValidated implements Comparable<GastoDomain> {
 
     private Integer idGasto;
 
@@ -109,6 +108,11 @@ public class GastoDomain extends EntityDomainObjectValidated {
     @Override
     public String toString() {
         return cuadreFk.info().getNombre();
+    }
+
+    @Override
+    public int compareTo(GastoDomain o) {
+        return -getCuadreFk().info().getFecha().compareTo(o.getCuadreFk().info().getFecha());
     }
 
 }
