@@ -1,5 +1,6 @@
 package com.jhw.gestion.modules.gasto.ui.chart;
 
+import com.clean.core.app.services.ExceptionHandler;
 import java.util.List;
 import com.jaga.swing.chart._MaterialBarChart;
 import com.jhw.gestion.modules.contabilidad.core.domain.MonedaDomain;
@@ -9,6 +10,8 @@ import com.jhw.gestion.modules.contabilidad.utils.MonedaHandler;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -24,23 +27,16 @@ public class GastosChart extends _MaterialBarChart implements Update {
     @Override
     public void update() {
         removeAllBars();
-
-        /*for (TipoGastoDomain tipo : GastoSwingModule.tipoGastoUC.findAll()) {
-            addCategory(tipo.getNombreGasto(), MaterialColors.AMBER_400);
+        try {
+            HashMap<TipoGastoDomain, Double> h = GastoSwingModule.tipoGastoUC.reportGastadoPorGasto();
+            for (Map.Entry<TipoGastoDomain, Double> entry : h.entrySet()) {
+                addBar(entry.getValue(), 0, entry.getKey().getNombreGasto());
+            }
+            this.getChart().setTitle("Gastos Realizados (Conversión a: " + MonedaHandler.getMonedaBase() + ")");
+        } catch (Exception ex) {
+            ExceptionHandler.handleException(ex);
         }
 
-        //coje una moneda para convertilas todas
-        MonedaDomain monBase = MonedaHandler.getMonedaBase();
-        if (monBase == null) {
-            return;
-        }
-
-        for (GastoDomain gastoDomain : GastoSwingModule.gastoUC.findAll()) {
-            addBar(gastoDomain.getValor(), 0, gasto);
-        }
-        //--------------------------------------------------------
-
-        this.getChart().setTitle("Gastos Realizados (Conversión a: " + monBase + ")");*/
     }
 
 }
