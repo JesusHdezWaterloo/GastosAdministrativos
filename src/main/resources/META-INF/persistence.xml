@@ -4,6 +4,18 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.jhw.gestion.modules.gasto.repo.entities.Gasto</class>
     <class>com.jhw.gestion.modules.gasto.repo.entities.TipoGasto</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.Cuadre</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.CuentaBancaria</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.CuentaContable</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.FormaPago</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.InfoOperacionContable</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.Liquidacion</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.Moneda</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.OperacionContable</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.Subcuenta</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.TipoCuenta</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.TipoOperacionContable</class>
+    <class>com.jhw.gestion.modules.contabilidad.repo.entities.Titular</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_db?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

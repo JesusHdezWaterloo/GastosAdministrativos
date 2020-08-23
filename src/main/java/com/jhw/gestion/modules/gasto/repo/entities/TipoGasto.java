@@ -5,6 +5,7 @@
  */
 package com.jhw.gestion.modules.gasto.repo.entities;
 
+import com.jhw.gestion.modules.contabilidad.repo.entities.FormaPago;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
 import com.jhw.gestion.modules.contabilidad.repo.entities.TipoOperacionContable;
 import java.io.Serializable;
@@ -69,6 +70,10 @@ public class TipoGasto implements Serializable {
     @ManyToOne(optional = false)
     private TipoOperacionContable tipoOperacionContableDefectoFk;
 
+    @JoinColumn(name = "forma_pago_fk", referencedColumnName = "id_forma_pago", nullable = false)
+    @ManyToOne(optional = false)
+    private FormaPago formaPagoFk;
+
     public TipoGasto() {
     }
 
@@ -76,10 +81,21 @@ public class TipoGasto implements Serializable {
         this.idTipoGasto = idTipoGasto;
     }
 
-    public TipoGasto(Integer idTipoGasto, String nombreGasto, String descripcion) {
+    public TipoGasto(Integer idTipoGasto, String nombreGasto, String descripcion, Moneda monedaDefectoFk, TipoOperacionContable tipoOperacionContableDefectoFk, FormaPago formaPagoFk) {
         this.idTipoGasto = idTipoGasto;
         this.nombreGasto = nombreGasto;
         this.descripcion = descripcion;
+        this.monedaDefectoFk = monedaDefectoFk;
+        this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
+        this.formaPagoFk = formaPagoFk;
+    }
+
+    public FormaPago getFormaPagoFk() {
+        return formaPagoFk;
+    }
+
+    public void setFormaPagoFk(FormaPago formaPagoFk) {
+        this.formaPagoFk = formaPagoFk;
     }
 
     public Integer getIdTipoGasto() {
