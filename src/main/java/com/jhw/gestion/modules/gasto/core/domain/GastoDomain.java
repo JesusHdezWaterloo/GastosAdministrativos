@@ -15,7 +15,6 @@ import javax.validation.constraints.PositiveOrZero;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-@SortBy(priority = {"cuadreFk"})
 public class GastoDomain extends EntityDomainObjectValidated {
 
     private Integer idGasto;
