@@ -7,6 +7,7 @@ import com.jhw.gestion.modules.gasto.core.domain.*;
 import com.jhw.gestion.modules.gasto.core.module.GastoCoreModule;
 import com.jhw.gestion.modules.gasto.core.repo_def.*;
 import com.jhw.gestion.modules.gasto.core.usecase_def.*;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 public class TipoGastoUseCaseImpl extends DefaultCRUDUseCase<TipoGastoDomain> implements TipoGastoUseCase {
@@ -18,18 +19,18 @@ public class TipoGastoUseCaseImpl extends DefaultCRUDUseCase<TipoGastoDomain> im
     }
 
     @Override
-    public HashMap<TipoGastoDomain, Double> reportGastadoPorGasto() throws Exception {
-        HashMap<TipoGastoDomain, Double> h = new HashMap<>();
+    public HashMap<TipoGastoDomain, BigDecimal> reportGastadoPorGasto() throws Exception {
+        HashMap<TipoGastoDomain, BigDecimal> h = new HashMap<>();
         MonedaDomain m = MonedaHandler.getMonedaBase();
         if (m == null) {
             return h;
         }
         for (TipoGastoDomain tipoGastoDomain : findAll()) {
-            h.put(tipoGastoDomain, 0d);
+            h.put(tipoGastoDomain, BigDecimal.ZERO);
         }
         for (GastoDomain g : GastoCoreModule.getInstance().getImplementation(GastoUseCase.class).findAll()) {
             TipoGastoDomain tipo = g.getTipoGastoFk();
-            double val = h.get(tipo) + MonedaHandler.venta(g.getValor(), g.getMonedaFk(), m);
+            BigDecimal val = h.get(tipo).add(MonedaHandler.venta(g.getValor(), g.getMonedaFk(), m));
             h.put(tipo, val);
         }
         return h;
