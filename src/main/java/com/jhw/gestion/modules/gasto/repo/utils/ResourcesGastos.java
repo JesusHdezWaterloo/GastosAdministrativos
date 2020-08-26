@@ -21,7 +21,7 @@ public class ResourcesGastos {
 
     public static void initEMF() {
         try {
-            EMF = Persistence.createEntityManagerFactory("GastoPU"/*, MySQLHandler.propertiesMap()*/);
+            EMF = Persistence.createEntityManagerFactory("GastoPU", MySQLHandler.propertiesMap(SCHEMA));
         } catch (Exception e) {
             e.printStackTrace();
         }
