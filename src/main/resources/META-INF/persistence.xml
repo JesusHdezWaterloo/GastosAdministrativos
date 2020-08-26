@@ -17,7 +17,7 @@
     <class>com.jhw.gestion.modules.contabilidad.repo.entities.TipoOperacionContable</class>
     <class>com.jhw.gestion.modules.contabilidad.repo.entities.Titular</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_db?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_gasto?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
