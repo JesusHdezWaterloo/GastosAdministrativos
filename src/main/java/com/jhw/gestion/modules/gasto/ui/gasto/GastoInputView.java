@@ -85,7 +85,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
             
             operacionInputView.setObject(new OperacionCuadreUI(getOldModel().getCuadreFk()));
             operacionInputView.getMoneda().setSelectedItem(getOldModel().getMonedaFk());
-            operacionInputView.getTextFieldValor().setDouble(getOldModel().getValor());
+            //operacionInputView.getTextFieldValor().setObject(getOldModel().getValor()); TODO: BigDecimal
         }
     }
 

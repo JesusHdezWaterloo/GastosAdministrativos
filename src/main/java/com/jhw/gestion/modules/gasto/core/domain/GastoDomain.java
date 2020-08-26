@@ -8,6 +8,8 @@ package com.jhw.gestion.modules.gasto.core.domain;
 import com.jhw.gestion.modules.contabilidad.core.domain.*;
 import javax.validation.constraints.NotNull;
 import com.jhw.utils.clean.EntityDomainObjectValidated;
+import java.math.BigDecimal;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.PositiveOrZero;
 
 /**
@@ -18,8 +20,9 @@ public class GastoDomain extends EntityDomainObjectValidated implements Comparab
 
     private Integer idGasto;
 
+    @Max(value = Long.MAX_VALUE, message = "#msg.module.contabilidad.validation.valor_muy_grande#")
     @PositiveOrZero(message = "#msg.module.gasto.validation.gasto_valor_negativo#")
-    private double valor;
+    private BigDecimal valor;
 
     @NotNull(message = "#msg.module.gasto.validation.gasto_cuadre_null#")
     private CuadreDomain cuadreFk;
@@ -37,7 +40,7 @@ public class GastoDomain extends EntityDomainObjectValidated implements Comparab
         this.idGasto = idGasto;
     }
 
-    public GastoDomain(double valor, CuadreDomain cuadreFk, MonedaDomain monedaFk, TipoGastoDomain tipoGastoFk) {
+    public GastoDomain(BigDecimal valor, CuadreDomain cuadreFk, MonedaDomain monedaFk, TipoGastoDomain tipoGastoFk) {
         this.valor = valor;
         this.cuadreFk = cuadreFk;
         this.monedaFk = monedaFk;
@@ -53,11 +56,11 @@ public class GastoDomain extends EntityDomainObjectValidated implements Comparab
         this.idGasto = idGasto;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

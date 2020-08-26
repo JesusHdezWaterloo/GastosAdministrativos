@@ -6,7 +6,6 @@
 package com.jhw.gestion.modules.gasto.repo.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,20 +17,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Cuadre;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
+import com.jhw.gestion.modules.gasto.repo.utils.ResourcesGastos;
+import java.math.BigDecimal;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.PositiveOrZero;
 
 /**
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @Entity
-@Table(name = "gasto")
+@Table(name = "gasto", schema = ResourcesGastos.SCHEMA)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Gasto.findAll", query = "SELECT g FROM Gasto g"),
@@ -49,8 +49,10 @@ public class Gasto implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "valor", nullable = false)
-    private double valor;
+    @Column(name = "valor", nullable = false, precision = 19, scale = 4)
+    @PositiveOrZero
+    @Max(value = Long.MAX_VALUE)
+    private BigDecimal valor;
 
     @JoinColumn(name = "cuadre_fk", referencedColumnName = "id_cuadre", nullable = false)
     @ManyToOne(optional = false)
@@ -71,7 +73,7 @@ public class Gasto implements Serializable {
         this.idGasto = idGasto;
     }
 
-    public Gasto(Integer idGasto, double valor, Cuadre cuadreFk, Moneda monedaFk, TipoGasto tipoGastoFk) {
+    public Gasto(Integer idGasto, BigDecimal valor, Cuadre cuadreFk, Moneda monedaFk, TipoGasto tipoGastoFk) {
         this.idGasto = idGasto;
         this.valor = valor;
         this.cuadreFk = cuadreFk;
@@ -87,11 +89,11 @@ public class Gasto implements Serializable {
         this.idGasto = idGasto;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

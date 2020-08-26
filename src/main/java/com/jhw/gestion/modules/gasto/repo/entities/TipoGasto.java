@@ -8,10 +8,9 @@ package com.jhw.gestion.modules.gasto.repo.entities;
 import com.jhw.gestion.modules.contabilidad.repo.entities.FormaPago;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
 import com.jhw.gestion.modules.contabilidad.repo.entities.TipoOperacionContable;
+import com.jhw.gestion.modules.gasto.repo.utils.ResourcesGastos;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @Entity
-@Table(name = "tipo_gasto", uniqueConstraints = {
+@Table(name = "tipo_gasto", schema = ResourcesGastos.SCHEMA, uniqueConstraints = {
     @UniqueConstraint(columnNames = {"nombre_gasto"})})
 @XmlRootElement
 @NamedQueries({

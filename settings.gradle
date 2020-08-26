@@ -1,11 +1,11 @@
 rootProject.name = 'GastosAdministrativos'
 
-include ':utils', ':clean-core', ':clean-swing', ':derivable-icons', ':material-standards', ':material-personalization', 'material-chart', 'material-swing', 'material-notification', 'material-model', 'module-default-config', 'module-licence', 'module-mysql'
-
+include 'utils', 'clean-core', 'clean-swing'
 project(':utils').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Utils" as File
 project(':clean-core').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\CleanCoreFull" as File
 project(':clean-swing').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\CleanSwing" as File
 
+include 'derivable-icons', 'material-standards', 'material-personalization', 'material-chart', 'material-swing', 'material-notification', 'material-model'
 project(':derivable-icons').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Material\\Derivable Icons" as File
 project(':material-standards').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Material\\Standards" as File
 project(':material-personalization').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\Personalization" as File
@@ -14,11 +14,10 @@ project(':material-swing').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gr
 project(':material-notification').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Material\\Notifications" as File
 project(':material-model').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Material\\Model" as File
 
-
+include 'module-default-config', 'module-licence', 'module-mysql'
 project(':module-default-config').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\DefaultConfiguration" as File
 project(':module-licence').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\Licence" as File
 project(':module-mysql').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\MySQL" as File
 
 include ':module-contabilidad'
-
 project(':module-contabilidad').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Gestion\\Contabilidad Empresarial" as File

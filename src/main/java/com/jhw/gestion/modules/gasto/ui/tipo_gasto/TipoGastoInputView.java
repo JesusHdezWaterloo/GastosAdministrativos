@@ -26,7 +26,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
 
     private void initComponents() {
         setHeader("Crear Tipo de gasto", "Editar Tipo de gasto");
-        textFieldNombre = new com.jhw.swing.material.components.textfield.validated._MaterialTextFieldStringNotEmpty();
+        textFieldNombre = new com.jhw.swing.material.components.textfield._MaterialTextField();
         monedaICBS = new com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS();
         tipoOpICBS = new TipoOperacionContableICBS();
         textAreaDescripcion = new com.jhw.swing.material.components.textarea.prepared._MaterialTextAreaDescripcion();
@@ -50,7 +50,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
     }
 
     // Variables declaration - do not modify
-    private com.jhw.swing.material.components.textfield.validated._MaterialTextFieldStringNotEmpty textFieldNombre;
+    private com.jhw.swing.material.components.textfield._MaterialTextField textFieldNombre;
     private com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS monedaICBS;
     private TipoOperacionContableICBS tipoOpICBS;
     private FormaPagoICBS formaPagoICBS;
