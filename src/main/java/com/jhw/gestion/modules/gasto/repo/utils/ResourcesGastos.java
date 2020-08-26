@@ -15,11 +15,13 @@ import javax.persistence.Persistence;
  */
 public class ResourcesGastos {
 
+    public static final String SCHEMA = "sigecon_gasto";
+
     public static EntityManagerFactory EMF;
 
     public static void initEMF() {
         try {
-            EMF = Persistence.createEntityManagerFactory("GastoPU", MySQLHandler.propertiesMap());
+            EMF = Persistence.createEntityManagerFactory("GastoPU", MySQLHandler.propertiesMap(SCHEMA));
         } catch (Exception e) {
             e.printStackTrace();
         }

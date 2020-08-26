@@ -1,19 +1,21 @@
 package com.jhw.gestion.modules.gasto.ui.module;
 
 import com.clean.swing.app.AbstractSwingApplication;
-import com.clean.swing.app.AbstractSwingMainModule;
+import com.clean.swing.app.DefaultAbstractSwingMainModule;
 import com.clean.swing.app.dashboard.DashBoardSimple;
 import com.clean.swing.app.dashboard.DashboardConstants;
 import com.jhw.gestion.modules.gasto.core.module.GastoCoreModule;
 import com.jhw.gestion.modules.gasto.core.usecase_def.*;
 import com.jhw.gestion.modules.gasto.repo.module.GastoRepoModule;
+import com.jhw.gestion.modules.gasto.repo.utils.ResourcesGastos;
 import com.jhw.swing.material.standards.MaterialIcons;
 import com.jhw.gestion.modules.gasto.ui.GastosMainPanel;
+import com.jhw.mysql.services.MySQLHandler;
 import com.jhw.swing.material.components.taskpane.SingleCollapseMenu;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
-public class GastoSwingModule implements AbstractSwingMainModule {
+public class GastoSwingModule extends DefaultAbstractSwingMainModule {
 
     private final GastoModuleNavigator navigator = new GastoModuleNavigator();
 
@@ -69,4 +71,8 @@ public class GastoSwingModule implements AbstractSwingMainModule {
         navigator.navigateTo(string, o);
     }
 
+    @Override
+    public void closeModule() {
+        MySQLHandler.save(ResourcesGastos.SCHEMA);
+    }
 }

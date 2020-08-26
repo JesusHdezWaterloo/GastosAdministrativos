@@ -21,6 +21,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Cuadre;
 import com.jhw.gestion.modules.contabilidad.repo.entities.Moneda;
+import com.jhw.gestion.modules.gasto.repo.utils.ResourcesGastos;
 import java.math.BigDecimal;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.PositiveOrZero;
@@ -30,7 +31,7 @@ import javax.validation.constraints.PositiveOrZero;
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @Entity
-@Table(name = "gasto")
+@Table(name = "gasto", schema = ResourcesGastos.SCHEMA)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Gasto.findAll", query = "SELECT g FROM Gasto g"),
