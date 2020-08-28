@@ -34,6 +34,7 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
     @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_operacion_null#")
     private TipoOperacionContableDomain tipoOperacionContableDefectoFk;
 
+    @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_forma_pago_null#")
     private FormaPagoDomain formaPagoFk;
 
     public TipoGastoDomain() {

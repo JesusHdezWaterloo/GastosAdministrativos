@@ -82,10 +82,10 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
             setHeader("Editar Gasto");
             docNombreInputView.setObject(new DocNombreUI(getOldModel().getCuadreFk().info()));
             fechaDescInputView.setObject(new FechaDescUI(getOldModel().getCuadreFk().info()));
-            
+
             operacionInputView.setObject(new OperacionCuadreUI(getOldModel().getCuadreFk()));
             operacionInputView.getMoneda().setSelectedItem(getOldModel().getMonedaFk());
-            //operacionInputView.getTextFieldValor().setObject(getOldModel().getValor()); TODO: BigDecimal
+            operacionInputView.getTextFieldValor().setObject(getOldModel().getValor());
         }
     }
 
@@ -98,7 +98,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
 
         CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc, tipoGasto.getTipoOperacionContableDefectoFk());
 
-        GastoDomain neww = new GastoDomain(op.getValor(), cuadre.buildCuadre(), op.getMoneda(), tipoGasto);
+        GastoDomain neww = new GastoDomain(op.getValor(), op.getMoneda(), cuadre.buildCuadre(), tipoGasto);
 
         if (getOldModel() == null) {
             return neww;

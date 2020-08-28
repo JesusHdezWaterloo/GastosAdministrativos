@@ -40,10 +40,10 @@ public class GastoDomain extends EntityDomainObjectValidated implements Comparab
         this.idGasto = idGasto;
     }
 
-    public GastoDomain(BigDecimal valor, CuadreDomain cuadreFk, MonedaDomain monedaFk, TipoGastoDomain tipoGastoFk) {
+    public GastoDomain(BigDecimal valor, MonedaDomain monedaFk, CuadreDomain cuadreFk, TipoGastoDomain tipoGastoFk) {
         this.valor = valor;
-        this.cuadreFk = cuadreFk;
         this.monedaFk = monedaFk;
+        this.cuadreFk = cuadreFk;
         this.tipoGastoFk = tipoGastoFk;
         validate();
     }
