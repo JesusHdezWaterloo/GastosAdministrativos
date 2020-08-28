@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @SortBy(priority = {"nombreGasto"})
-public class TipoGastoDomain extends EntityDomainObjectValidated {
+public class TipoGastoDomain extends EntityDomainObjectValidated implements TipoPagable {
 
     private Integer idTipoGasto;
 
@@ -53,14 +53,6 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         validate();
     }
 
-    public FormaPagoDomain getFormaPagoFk() {
-        return formaPagoFk;
-    }
-
-    public void setFormaPagoFk(FormaPagoDomain formaPagoFk) {
-        this.formaPagoFk = formaPagoFk;
-    }
-
     public Integer getIdTipoGasto() {
         return idTipoGasto;
     }
@@ -85,20 +77,34 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         this.descripcion = descripcion;
     }
 
+    @Override
     public MonedaDomain getMonedaDefectoFk() {
         return monedaDefectoFk;
     }
 
+    @Override
     public void setMonedaDefectoFk(MonedaDomain monedaDefectoFk) {
         this.monedaDefectoFk = monedaDefectoFk;
     }
 
+    @Override
     public TipoOperacionContableDomain getTipoOperacionContableDefectoFk() {
         return tipoOperacionContableDefectoFk;
     }
 
+    @Override
     public void setTipoOperacionContableDefectoFk(TipoOperacionContableDomain tipoOperacionContableDefectoFk) {
         this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
+    }
+
+    @Override
+    public FormaPagoDomain getFormaPagoFk() {
+        return formaPagoFk;
+    }
+
+    @Override
+    public void setFormaPagoFk(FormaPagoDomain formaPagoFk) {
+        this.formaPagoFk = formaPagoFk;
     }
 
     @Override
