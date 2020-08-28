@@ -127,9 +127,8 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         docNombreInputView.setObject(new DocNombreUI("Pago de " + tipo.getNombreGasto(), ""));
 
         operacionInputView.getMoneda().setSelectedItem(tipo.getMonedaDefectoFk());
-        operacionInputView.getCuentaICBS().setMatchingItem(tipo.getTipoOperacionContableDefectoFk().getTipoCuentaDefectoFk());
-        operacionInputView.getCuentaCuadreICBS().setMatchingItem(tipo.getTipoOperacionContableDefectoFk().getTipoCuentaCuadreDefectoFk());
-
+        operacionInputView.setTipoOp(tipo.getTipoOperacionContableDefectoFk());
+        
         tipoGastoICBS.setSelectedItem(tipo);
     }
 
