@@ -16,7 +16,7 @@ import javax.validation.constraints.PositiveOrZero;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class GastoDomain extends EntityDomainObjectValidated implements Comparable<GastoDomain> {
+public class GastoDomain extends EntityDomainObjectValidated implements Comparable<GastoDomain>, Pagable{
 
     private Integer idGasto;
 
@@ -56,22 +56,27 @@ public class GastoDomain extends EntityDomainObjectValidated implements Comparab
         this.idGasto = idGasto;
     }
 
+    @Override
     public BigDecimal getValor() {
         return valor;
     }
 
+    @Override
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
+    @Override
     public CuadreDomain getCuadreFk() {
         return cuadreFk;
     }
 
+    @Override
     public void setCuadreFk(CuadreDomain cuadreFk) {
         this.cuadreFk = cuadreFk;
     }
 
+    @Override
     public MonedaDomain getMonedaFk() {
         return monedaFk;
     }
