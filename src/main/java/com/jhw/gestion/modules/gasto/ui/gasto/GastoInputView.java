@@ -64,6 +64,8 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         vlc.add(fechaDescInputView, true);
 
         this.setComponent(vlc.build());
+        
+        operacionInputView.getTipoOperICBS().setEnabled(false);
     }
 
     // Variables declaration - do not modify
@@ -96,7 +98,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         FechaDescUI fechaDesc = fechaDescInputView.getNewModel();
         TipoGastoDomain tipoGasto = tipoGastoICBS.getSelectedItem();
 
-        CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc, tipoGasto.getTipoOperacionContableDefectoFk());
+        CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc);
 
         GastoDomain neww = new GastoDomain(op.getValor(), op.getMoneda(), cuadre.buildCuadre(), tipoGasto);
 
