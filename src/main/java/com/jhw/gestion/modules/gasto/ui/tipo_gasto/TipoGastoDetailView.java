@@ -55,7 +55,7 @@ public class TipoGastoDetailView extends _MaterialPanelDetail<TipoGastoDomain> {
 
     @Override
     protected void buttonNuevoActionListener() {
-        new DialogModelInput(this, new TipoGastoInputView());
+        new DialogModelInput(this, TipoGastoInputView.from());
     }
 
     @Override
@@ -70,7 +70,7 @@ public class TipoGastoDetailView extends _MaterialPanelDetail<TipoGastoDomain> {
 
     @Override
     protected void editAction(TipoGastoDomain obj) {
-        new DialogModelInput(this, new TipoGastoInputView(obj));
+        new DialogModelInput(this, TipoGastoInputView.fromModel(obj));
     }
 
     @Override

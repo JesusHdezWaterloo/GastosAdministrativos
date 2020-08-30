@@ -1,6 +1,7 @@
 package com.jhw.gestion.modules.gasto.ui.tipo_gasto;
 
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
+import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import java.awt.event.ActionListener;
 import com.jhw.swing.models.input.dialogs.DialogInputCBS;
@@ -14,6 +15,7 @@ public class TipoGastoICBS extends InputComboBoxSelection<TipoGastoDomain> {
 
     public TipoGastoICBS() {
         super("Tipo de gasto");
+        setIcon(GastoModuleNavigator.ICON_TIPO_GASTO);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class TipoGastoICBS extends InputComboBoxSelection<TipoGastoDomain> {
     }
 
     private void onButtonAddActionPerformed() {
-        new DialogInputCBS(this, new TipoGastoInputView());
+        new DialogInputCBS(this, TipoGastoInputView.from());
     }
 
 }
