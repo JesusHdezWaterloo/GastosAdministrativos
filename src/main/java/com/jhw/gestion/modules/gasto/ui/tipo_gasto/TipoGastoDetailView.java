@@ -9,6 +9,7 @@ import com.jhw.swing.material.components.table.Column;
 import com.jhw.swing.models.input.dialogs.DialogModelInput;
 import java.awt.event.ActionEvent;
 import com.jhw.gestion.modules.gasto.ui.gasto.GastoInputView;
+import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
 import javax.swing.AbstractAction;
 
 /**
@@ -29,7 +30,10 @@ public class TipoGastoDetailView extends _MaterialPanelDetail<TipoGastoDomain> {
 
     private void personalize() {
         addActionsExtra();
+
         this.setHeaderText("Tipos de gastos");
+        this.setIcon(GastoModuleNavigator.ICON_TIPO_GASTO);
+
         this.setActionColumnButtonsVisivility(true, true, false);//no pone el view, no esta implementado todavia
     }
 
@@ -75,7 +79,7 @@ public class TipoGastoDetailView extends _MaterialPanelDetail<TipoGastoDomain> {
     }
 
     private void addActionsExtra() {
-        this.addActionExtra(new AbstractAction("Pagar", MaterialIcons.MONETIZATION_ON.deriveIcon(18f)) {
+        this.addActionExtra(new AbstractAction("Gastar", GastoModuleNavigator.ICON_GASTO.deriveIcon(18f)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onPayGastoActionPerformed();
