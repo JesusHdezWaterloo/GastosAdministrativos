@@ -1,6 +1,5 @@
 package com.jhw.gestion.modules.gasto.ui.gasto;
 
-import com.jhw.gestion.modules.contabilidad.core.domain.CuadreDomain;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.CuadreUI;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.DocNombreUI;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.FechaDescUI;
@@ -10,7 +9,6 @@ import com.jhw.gestion.modules.contabilidad.ui.cuadre.pedazos.FechaDescInputView
 import com.jhw.gestion.modules.contabilidad.ui.cuadre.pedazos.OperacionCuadreInputView;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
-import com.jhw.gestion.modules.gasto.repo.entities.Gasto;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import com.jhw.gestion.modules.gasto.ui.tipo_gasto.TipoGastoICBS;
 import com.jhw.swing.material.components.container.layout.VerticalLayoutContainer;
@@ -37,7 +35,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         return thiss;
     }
 
-    public GastoInputView(GastoDomain model) {
+    private GastoInputView(GastoDomain model) {
         super(model, GastoSwingModule.gastoUC, GastoDomain.class);
         initComponents();
         addListener();
@@ -46,16 +44,16 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
 
     private void initComponents() {
         //doc, nombre ....
-        docNombreInputView = new DocNombreInputView();
+        docNombreInputView = DocNombreInputView.from();
 
         //valor, cuentas ....
-        operacionInputView = new OperacionCuadreInputView();
+        operacionInputView = OperacionCuadreInputView.from();
 
         //tipo gasto
         tipoGastoICBS = new TipoGastoICBS();
 
         //fecha, desc ....
-        fechaDescInputView = new FechaDescInputView();
+        fechaDescInputView = FechaDescInputView.from();
 
         VerticalLayoutContainer.builder vlc = VerticalLayoutContainer.builder(400);
         vlc.add(docNombreInputView);
