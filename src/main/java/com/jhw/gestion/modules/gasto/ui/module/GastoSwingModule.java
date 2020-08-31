@@ -46,7 +46,7 @@ public class GastoSwingModule extends DefaultAbstractSwingMainModule {
         DashBoardSimple dash = app.rootView().dashboard();
 
         dash.addView(GastoModuleNavigator.NAV_GASTO, new GastosMainPanel());
-        SingleCollapseMenu menu = new SingleCollapseMenu(new AbstractAction(GastoModuleNavigator.GASTO, MaterialIcons.SHOPPING_CART) {
+        SingleCollapseMenu menu = new SingleCollapseMenu(new AbstractAction(GastoModuleNavigator.GASTO, GastoModuleNavigator.ICON_GASTO) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 app.navigateTo(GastoModuleNavigator.NAV_GASTO);

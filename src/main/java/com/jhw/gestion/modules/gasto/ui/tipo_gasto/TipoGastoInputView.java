@@ -5,6 +5,7 @@ import com.jhw.gestion.modules.contabilidad.ui.tipo_operacion.TipoOperacionConta
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import com.jhw.swing.material.components.container.layout.VerticalLayoutContainer;
+import com.jhw.swing.material.standards.MaterialIcons;
 import com.jhw.swing.models.clean.CleanCRUDInputView;
 import java.util.Map;
 
@@ -14,11 +15,15 @@ import java.util.Map;
  */
 public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
 
-    public TipoGastoInputView() {
-        this(null);
+    public static TipoGastoInputView from() {
+        return new TipoGastoInputView(null);
     }
 
-    public TipoGastoInputView(TipoGastoDomain model) {
+    public static TipoGastoInputView fromModel(TipoGastoDomain model) {
+        return new TipoGastoInputView(model);
+    }
+
+    private TipoGastoInputView(TipoGastoDomain model) {
         super(model, GastoSwingModule.tipoGastoUC, TipoGastoDomain.class);
         initComponents();
         update();
@@ -26,18 +31,22 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
 
     private void initComponents() {
         setHeader("Crear Tipo de gasto", "Editar Tipo de gasto");
-        textFieldNombre = new com.jhw.swing.material.components.textfield._MaterialTextField();
-        monedaICBS = new com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS();
-        tipoOpICBS = new TipoOperacionContableICBS();
-        textAreaDescripcion = new com.jhw.swing.material.components.textarea.prepared._MaterialTextAreaDescripcion();
 
-        monedaICBS.setLabel("Moneda por defecto");
-        tipoOpICBS.setLabel("Operación contable por defecto");
-
+        textFieldNombre = new com.jhw.swing.material.components.textfield._MaterialTextFieldIcon();
         textFieldNombre.setLabel("Nombre");
         textFieldNombre.setHint("Nombre del gasto");
+        textFieldNombre.setIcon(MaterialIcons.PRIORITY_HIGH);
+
+        monedaICBS = new com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS();
+        monedaICBS.setLabel("Moneda por defecto");
+        monedaICBS.setIcon(MaterialIcons.ATTACH_MONEY);
+
+        tipoOpICBS = new TipoOperacionContableICBS();
+        tipoOpICBS.setLabel("Operación contable por defecto");
 
         formaPagoICBS = new FormaPagoICBS();
+
+        textAreaDescripcion = new com.jhw.swing.material.components.textarea.prepared._MaterialTextAreaDescripcion();
 
         VerticalLayoutContainer.builder vlc = VerticalLayoutContainer.builder();
         vlc.add(textFieldNombre);
@@ -50,7 +59,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
     }
 
     // Variables declaration - do not modify
-    private com.jhw.swing.material.components.textfield._MaterialTextField textFieldNombre;
+    private com.jhw.swing.material.components.textfield._MaterialTextFieldIcon textFieldNombre;
     private com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS monedaICBS;
     private TipoOperacionContableICBS tipoOpICBS;
     private FormaPagoICBS formaPagoICBS;

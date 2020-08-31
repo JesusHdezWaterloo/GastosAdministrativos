@@ -26,7 +26,7 @@ public class GastosChart extends _MaterialBarChart implements Update {
     public void update() {
         removeAllBars();
         try {
-            HashMap<TipoGastoDomain, BigDecimal> h = GastoSwingModule.tipoGastoUC.reportGastadoPorGasto();
+            HashMap<TipoGastoDomain, BigDecimal> h = GastoSwingModule.gastoUC.reporteGastadoPorGasto();
             for (Map.Entry<TipoGastoDomain, BigDecimal> entry : h.entrySet()) {
                 addBar(entry.getValue(), 0, entry.getKey().getNombreGasto());
             }

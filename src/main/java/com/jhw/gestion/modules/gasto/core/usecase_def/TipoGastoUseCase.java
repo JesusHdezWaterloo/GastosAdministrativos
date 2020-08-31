@@ -7,5 +7,4 @@ import java.util.HashMap;
 
 public interface TipoGastoUseCase extends CRUDUseCase<TipoGastoDomain> {
 
-    public HashMap<TipoGastoDomain, BigDecimal> reportGastadoPorGasto() throws Exception;
 }

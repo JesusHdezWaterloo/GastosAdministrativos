@@ -18,21 +18,4 @@ public class TipoGastoUseCaseImpl extends DefaultCRUDUseCase<TipoGastoDomain> im
         super.setRepo(repo);
     }
 
-    @Override
-    public HashMap<TipoGastoDomain, BigDecimal> reportGastadoPorGasto() throws Exception {
-        HashMap<TipoGastoDomain, BigDecimal> h = new HashMap<>();
-        MonedaDomain m = MonedaHandler.getMonedaBase();
-        if (m == null) {
-            return h;
-        }
-        for (TipoGastoDomain tipoGastoDomain : findAll()) {
-            h.put(tipoGastoDomain, BigDecimal.ZERO);
-        }
-        for (GastoDomain g : GastoCoreModule.getInstance().getImplementation(GastoUseCase.class).findAll()) {
-            TipoGastoDomain tipo = g.getTipoGastoFk();
-            BigDecimal val = h.get(tipo).add(MonedaHandler.venta(g.getValor(), g.getMonedaFk(), m));
-            h.put(tipo, val);
-        }
-        return h;
-    }
 }

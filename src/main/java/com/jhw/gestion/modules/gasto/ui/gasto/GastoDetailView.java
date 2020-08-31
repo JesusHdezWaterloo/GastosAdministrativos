@@ -14,9 +14,11 @@ import com.jhw.swing.material.components.table.editors_renders.money.MoneyCellRe
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyTableComponent;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
 import com.jhw.gestion.modules.gasto.ui.chart.GastosChart;
+import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
 import static com.jhw.utils.others.SDF.SDF;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.AbstractAction;
 
 /**
  *
@@ -46,6 +48,7 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
         setUpEditorsRenders();
 
         this.setHeaderText("Gastos Realizados");
+        this.setIcon(GastoModuleNavigator.ICON_GASTO);
 
         addOptionsElements();
 
@@ -97,17 +100,12 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
     }
 
     private void addOptionsElements() {
-        //detalles de todas las operaciones
-        _MaterialButtonIconTransparent btnChart = new _MaterialButtonIconTransparent();
-        btnChart.setIcon(MaterialIcons.ASSESSMENT.deriveIcon(30f));
-        btnChart.addActionListener(new ActionListener() {
+        this.addOptionElement(new AbstractAction("Gráfico con detalles de los gastos.", GastoModuleNavigator.ICON_REPORTE_GASTO.deriveIcon(30f)) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onChartOptionActionPerformed();
             }
         });
-        btnChart.setToolTipText("Gráfico con detalles de los gastos.");
-        this.addOptionElement(btnChart);
     }
 
     private void onChartOptionActionPerformed() {

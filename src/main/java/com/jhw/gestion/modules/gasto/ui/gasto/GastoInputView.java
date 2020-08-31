@@ -1,6 +1,5 @@
 package com.jhw.gestion.modules.gasto.ui.gasto;
 
-import com.jhw.gestion.modules.contabilidad.core.domain.CuadreDomain;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.CuadreUI;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.DocNombreUI;
 import com.jhw.gestion.modules.contabilidad.core.domain.facade.FechaDescUI;
@@ -10,7 +9,6 @@ import com.jhw.gestion.modules.contabilidad.ui.cuadre.pedazos.FechaDescInputView
 import com.jhw.gestion.modules.contabilidad.ui.cuadre.pedazos.OperacionCuadreInputView;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
-import com.jhw.gestion.modules.gasto.repo.entities.Gasto;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import com.jhw.gestion.modules.gasto.ui.tipo_gasto.TipoGastoICBS;
 import com.jhw.swing.material.components.container.layout.VerticalLayoutContainer;
@@ -37,7 +35,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         return thiss;
     }
 
-    public GastoInputView(GastoDomain model) {
+    private GastoInputView(GastoDomain model) {
         super(model, GastoSwingModule.gastoUC, GastoDomain.class);
         initComponents();
         addListener();
@@ -46,16 +44,16 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
 
     private void initComponents() {
         //doc, nombre ....
-        docNombreInputView = new DocNombreInputView();
+        docNombreInputView = DocNombreInputView.from();
 
         //valor, cuentas ....
-        operacionInputView = new OperacionCuadreInputView();
+        operacionInputView = OperacionCuadreInputView.from();
 
         //tipo gasto
         tipoGastoICBS = new TipoGastoICBS();
 
         //fecha, desc ....
-        fechaDescInputView = new FechaDescInputView();
+        fechaDescInputView = FechaDescInputView.from();
 
         VerticalLayoutContainer.builder vlc = VerticalLayoutContainer.builder(400);
         vlc.add(docNombreInputView);
@@ -64,6 +62,8 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         vlc.add(fechaDescInputView, true);
 
         this.setComponent(vlc.build());
+        
+        operacionInputView.getTipoOperICBS().setEnabled(false);
     }
 
     // Variables declaration - do not modify
@@ -82,10 +82,10 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
             setHeader("Editar Gasto");
             docNombreInputView.setObject(new DocNombreUI(getOldModel().getCuadreFk().info()));
             fechaDescInputView.setObject(new FechaDescUI(getOldModel().getCuadreFk().info()));
-            
+
             operacionInputView.setObject(new OperacionCuadreUI(getOldModel().getCuadreFk()));
             operacionInputView.getMoneda().setSelectedItem(getOldModel().getMonedaFk());
-            //operacionInputView.getTextFieldValor().setObject(getOldModel().getValor()); TODO: BigDecimal
+            operacionInputView.getTextFieldValor().setObject(getOldModel().getValor());
         }
     }
 
@@ -96,9 +96,9 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         FechaDescUI fechaDesc = fechaDescInputView.getNewModel();
         TipoGastoDomain tipoGasto = tipoGastoICBS.getSelectedItem();
 
-        CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc, tipoGasto.getTipoOperacionContableDefectoFk());
+        CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc);
 
-        GastoDomain neww = new GastoDomain(op.getValor(), cuadre.buildCuadre(), op.getMoneda(), tipoGasto);
+        GastoDomain neww = new GastoDomain(op.getValor(), op.getMoneda(), cuadre.buildCuadre(), tipoGasto);
 
         if (getOldModel() == null) {
             return neww;
@@ -127,9 +127,8 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         docNombreInputView.setObject(new DocNombreUI("Pago de " + tipo.getNombreGasto(), ""));
 
         operacionInputView.getMoneda().setSelectedItem(tipo.getMonedaDefectoFk());
-        operacionInputView.getCuentaICBS().setMatchingItem(tipo.getTipoOperacionContableDefectoFk().getTipoCuentaDefectoFk());
-        operacionInputView.getCuentaCuadreICBS().setMatchingItem(tipo.getTipoOperacionContableDefectoFk().getTipoCuentaCuadreDefectoFk());
-
+        operacionInputView.setTipoOp(tipo.getTipoOperacionContableDefectoFk());
+        
         tipoGastoICBS.setSelectedItem(tipo);
     }
 

@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @SortBy(priority = {"nombreGasto"})
-public class TipoGastoDomain extends EntityDomainObjectValidated {
+public class TipoGastoDomain extends EntityDomainObjectValidated implements TipoPagable {
 
     private Integer idTipoGasto;
 
@@ -34,6 +34,7 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
     @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_operacion_null#")
     private TipoOperacionContableDomain tipoOperacionContableDefectoFk;
 
+    @NotNull(message = "#msg.module.gasto.validation.tipo_gasto_forma_pago_null#")
     private FormaPagoDomain formaPagoFk;
 
     public TipoGastoDomain() {
@@ -50,14 +51,6 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
         this.formaPagoFk = formaPagoFk;
         validate();
-    }
-
-    public FormaPagoDomain getFormaPagoFk() {
-        return formaPagoFk;
-    }
-
-    public void setFormaPagoFk(FormaPagoDomain formaPagoFk) {
-        this.formaPagoFk = formaPagoFk;
     }
 
     public Integer getIdTipoGasto() {
@@ -84,20 +77,34 @@ public class TipoGastoDomain extends EntityDomainObjectValidated {
         this.descripcion = descripcion;
     }
 
+    @Override
     public MonedaDomain getMonedaDefectoFk() {
         return monedaDefectoFk;
     }
 
+    @Override
     public void setMonedaDefectoFk(MonedaDomain monedaDefectoFk) {
         this.monedaDefectoFk = monedaDefectoFk;
     }
 
+    @Override
     public TipoOperacionContableDomain getTipoOperacionContableDefectoFk() {
         return tipoOperacionContableDefectoFk;
     }
 
+    @Override
     public void setTipoOperacionContableDefectoFk(TipoOperacionContableDomain tipoOperacionContableDefectoFk) {
         this.tipoOperacionContableDefectoFk = tipoOperacionContableDefectoFk;
+    }
+
+    @Override
+    public FormaPagoDomain getFormaPagoFk() {
+        return formaPagoFk;
+    }
+
+    @Override
+    public void setFormaPagoFk(FormaPagoDomain formaPagoFk) {
+        this.formaPagoFk = formaPagoFk;
     }
 
     @Override
