@@ -21,3 +21,6 @@ project(':module-mysql').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Grad
 
 include ':module-contabilidad'
 project(':module-contabilidad').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Gestion\\Contabilidad Empresarial" as File
+
+include 'module-export'
+project(':module-export').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\Modulos Utils\\Export" as File
