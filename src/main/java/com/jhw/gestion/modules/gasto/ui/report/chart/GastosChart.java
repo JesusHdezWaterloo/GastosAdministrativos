@@ -1,4 +1,4 @@
-package com.jhw.gestion.modules.gasto.ui.chart;
+package com.jhw.gestion.modules.gasto.ui.report.chart;
 
 import com.clean.core.app.services.ExceptionHandler;
 import com.jaga.swing.chart._MaterialBarChart;
