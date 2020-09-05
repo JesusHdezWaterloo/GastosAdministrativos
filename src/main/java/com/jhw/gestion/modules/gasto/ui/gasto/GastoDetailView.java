@@ -14,7 +14,9 @@ import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
 import com.jhw.gestion.modules.gasto.ui.report.chart.GastosChart;
 import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
 import com.jhw.gestion.modules.gasto.ui.report.export.GastoExport;
+import com.jhw.swing.material.components.button._MaterialButtonPopup;
 import com.jhw.utils.others.SDF;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.function.BiFunction;
@@ -104,12 +106,20 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
     }
 
     private void addOptionsElements() {
-        this.addOptionElement(new AbstractAction("Gráfico con detalles de los gastos.", GastoModuleNavigator.ICON_REPORTE_GASTO.deriveIcon(30f)) {
+        _MaterialButtonPopup reportButton = new _MaterialButtonPopup();
+        reportButton.setText("Reportes");
+        reportButton.setIconTextGap(10);
+        reportButton.setIcon(GastoModuleNavigator.ICON_REPORTE_GASTO);
+        reportButton.setToolTipText("Reportes relacionados a los gastos");//. Click para desplegar TODAS las opciones de exportación.
+
+        reportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onChartOptionActionPerformed();
             }
         });
+        addOptionElement(reportButton);
+
     }
 
     private void onChartOptionActionPerformed() {
