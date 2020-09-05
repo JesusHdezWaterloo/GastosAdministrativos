@@ -11,8 +11,9 @@ import com.jhw.swing.bundles.dialog.DialogPanel;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyCellRender;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyTableComponent;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
-import com.jhw.gestion.modules.gasto.ui.report.chart.GastosChart;
+import com.jhw.gestion.modules.gasto.ui.report.chart.GastosByTipoChart;
 import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
+import com.jhw.gestion.modules.gasto.ui.report.chart.GastosReport;
 import com.jhw.gestion.modules.gasto.ui.report.export.GastoExport;
 import com.jhw.swing.material.components.button._MaterialButtonPopup;
 import com.jhw.utils.others.SDF;
@@ -110,20 +111,16 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
         reportButton.setText("Reportes");
         reportButton.setIconTextGap(10);
         reportButton.setIcon(GastoModuleNavigator.ICON_REPORTE_GASTO);
-        reportButton.setToolTipText("Reportes relacionados a los gastos");//. Click para desplegar TODAS las opciones de exportación.
+        reportButton.setToolTipText("Reportes relacionados a los gastos.");//. Click para desplegar TODAS las opciones de exportación.
 
         reportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onChartOptionActionPerformed();
+                GastosReport.reportGastosByTipo();
             }
         });
         addOptionElement(reportButton);
 
-    }
-
-    private void onChartOptionActionPerformed() {
-        new DialogPanel("Gráfico de gastos", new GastosChart());
     }
 
     private void setUpEditorsRenders() {
