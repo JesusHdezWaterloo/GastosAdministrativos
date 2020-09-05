@@ -1,30 +1,35 @@
 package com.jhw.gestion.modules.gasto.ui.gasto;
 
 import com.clean.core.app.services.ExceptionHandler;
+import com.jhw.excel.utils.ExcelListWriter;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import com.jhw.swing.material.standards.MaterialIcons;
-import com.jhw.swing.material.components.button._MaterialButtonIconTransparent;
-import com.jhw.swing.models.detail._MaterialPanelDetail;
+import com.jhw.swing.models.detail._MaterialPanelDetailDragDrop;
 import com.jhw.swing.material.components.table.Column;
 import com.jhw.swing.models.input.dialogs.DialogModelInput;
 import com.jhw.swing.bundles.dialog.DialogPanel;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyCellRender;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyTableComponent;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
-import com.jhw.gestion.modules.gasto.ui.chart.GastosChart;
+import com.jhw.gestion.modules.gasto.ui.report.chart.GastosByTipoChart;
 import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
-import static com.jhw.utils.others.SDF.SDF;
+import com.jhw.gestion.modules.gasto.ui.report.chart.GastosReport;
+import com.jhw.gestion.modules.gasto.ui.report.export.GastoExport;
+import com.jhw.swing.material.components.button._MaterialButtonPopup;
+import com.jhw.utils.others.SDF;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.function.BiFunction;
 import javax.swing.AbstractAction;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  *
  * @author Jesús Hernández Barrios (jhernandezb96@gmail.com)
  */
-public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implements PropertyChangeListener {
+public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> implements PropertyChangeListener {
 
     private static final String COL_GASTO = "Gasto";
     private static final String COL_VALOR = "Valor";
@@ -54,6 +59,8 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
 
         this.getTable().setPageVisibility(true);
         this.setActionColumnButtonsVisivility(true, true, false);//no pone el view, no esta implementado todavia
+
+        this.setExportConfig(GastoExport.from(this));
     }
 
     @Override
@@ -70,7 +77,7 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
         return new Object[]{
             obj.getTipoGastoFk(),
             MoneyTableComponent.from(obj.getValor(), obj.getMonedaFk()),
-            SDF.format(obj.getCuadreFk().info().getFecha()),
+            SDF.SDF.format(obj.getCuadreFk().info().getFecha()),
             obj.getCuadreFk().getOperacionContableFk().getCuentaFk()};
     }
 
@@ -100,16 +107,20 @@ public class GastoDetailView extends _MaterialPanelDetail<GastoDomain> implement
     }
 
     private void addOptionsElements() {
-        this.addOptionElement(new AbstractAction("Gráfico con detalles de los gastos.", GastoModuleNavigator.ICON_REPORTE_GASTO.deriveIcon(30f)) {
+        _MaterialButtonPopup reportButton = new _MaterialButtonPopup();
+        reportButton.setText("Reportes");
+        reportButton.setIconTextGap(10);
+        reportButton.setIcon(GastoModuleNavigator.ICON_REPORTE_GASTO);
+        reportButton.setToolTipText("Reportes relacionados a los gastos.");//. Click para desplegar TODAS las opciones de exportación.
+
+        reportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onChartOptionActionPerformed();
+                GastosReport.reportGastosByTipo();
             }
         });
-    }
+        addOptionElement(reportButton);
 
-    private void onChartOptionActionPerformed() {
-        new DialogPanel("Gráfico de gastos", new GastosChart());
     }
 
     private void setUpEditorsRenders() {

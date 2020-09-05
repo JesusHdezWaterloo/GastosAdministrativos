@@ -1,4 +1,4 @@
-package com.jhw.gestion.modules.gasto.ui.chart;
+package com.jhw.gestion.modules.gasto.ui.report.chart;
 
 import com.clean.core.app.services.ExceptionHandler;
 import com.jaga.swing.chart._MaterialBarChart;
@@ -15,10 +15,10 @@ import java.util.Map;
  *
  * @author Jesús Hernández Barrios (jhernandezb96@gmail.com)
  */
-public class GastosChart extends _MaterialBarChart implements Update {
+public class GastosByTipoChart extends _MaterialBarChart implements Update {
 
-    public GastosChart() {
-        addCategory("Gastos", MaterialColors.AMBERA_700);
+    public GastosByTipoChart() {
+        addCategory("Tipo de gasto", MaterialColors.AMBERA_700);
         update();
     }
 
@@ -30,7 +30,7 @@ public class GastosChart extends _MaterialBarChart implements Update {
             for (Map.Entry<TipoGastoDomain, BigDecimal> entry : h.entrySet()) {
                 addBar(entry.getValue(), 0, entry.getKey().getNombreGasto());
             }
-            this.getChart().setTitle("Gastos Realizados (Conversión a: " + MonedaHandler.getMonedaBase() + ")");
+            this.getChart().setTitle("Gastos Realizados por tipo (Conversión a: " + MonedaHandler.getMonedaBase() + ")");
         } catch (Exception ex) {
             ExceptionHandler.handleException(ex);
         }
