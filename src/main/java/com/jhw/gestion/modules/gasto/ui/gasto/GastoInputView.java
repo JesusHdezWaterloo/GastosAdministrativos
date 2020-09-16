@@ -84,7 +84,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
             fechaDescInputView.setObject(new FechaDescUI(getOldModel().getCuadreFk().info()));
 
             operacionInputView.setObject(new OperacionCuadreUI(getOldModel().getCuadreFk()));
-            operacionInputView.getMoneda().setSelectedItem(getOldModel().getMonedaFk());
+            operacionInputView.getMoneda().setObject(getOldModel().getMonedaFk());
             operacionInputView.getTextFieldValor().setObject(getOldModel().getValor());
         }
     }
@@ -94,7 +94,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         DocNombreUI docNombre = docNombreInputView.getNewModel();
         OperacionCuadreUI op = operacionInputView.getNewModel();
         FechaDescUI fechaDesc = fechaDescInputView.getNewModel();
-        TipoGastoDomain tipoGasto = tipoGastoICBS.getSelectedItem();
+        TipoGastoDomain tipoGasto = tipoGastoICBS.getObject();
 
         CuadreUI cuadre = new CuadreUI(docNombre, op, fechaDesc);
 
@@ -117,7 +117,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
 
     private void onGastoComboBoxActionPerformed() {
         try {
-            setTipoGasto(tipoGastoICBS.getSelectedItem());
+            setTipoGasto(tipoGastoICBS.getObject());
         } catch (Exception e) {
         }
     }
@@ -126,10 +126,10 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
         fechaDescInputView.setObject(new FechaDescUI(new Date(), tipo.getFormaPagoFk(), tipo.getDescripcion()));
         docNombreInputView.setObject(new DocNombreUI("Pago de " + tipo.getNombreGasto(), ""));
 
-        operacionInputView.getMoneda().setSelectedItem(tipo.getMonedaDefectoFk());
+        operacionInputView.getMoneda().setObject(tipo.getMonedaDefectoFk());
         operacionInputView.setTipoOp(tipo.getTipoOperacionContableDefectoFk());
         
-        tipoGastoICBS.setSelectedItem(tipo);
+        tipoGastoICBS.setObject(tipo);
     }
 
 }
