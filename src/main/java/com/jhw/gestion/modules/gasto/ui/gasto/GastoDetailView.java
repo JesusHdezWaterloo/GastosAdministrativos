@@ -57,7 +57,7 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
 
         addOptionsElements();
 
-        this.getTable().setPageVisibility(true);
+        this.getTableByPage().setPageVisibility(true);
         this.setActionColumnButtonsVisivility(true, true, false);//no pone el view, no esta implementado todavia
 
         this.setExportConfig(GastoExport.from(this));
