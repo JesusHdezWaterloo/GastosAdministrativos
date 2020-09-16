@@ -5,6 +5,10 @@ import com.jhw.gestion.modules.contabilidad.ui.tipo_operacion.TipoOperacionConta
 import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import com.jhw.swing.material.components.container.layout.VerticalLayoutContainer;
+import com.jhw.swing.material.components.textarea.MaterialTextArea;
+import com.jhw.swing.material.components.textarea.MaterialTextAreaFactory;
+import com.jhw.swing.material.components.textfield.MaterialTextFactory;
+import com.jhw.swing.material.components.textfield.MaterialTextFieldIcon;
 import com.jhw.swing.material.standards.MaterialIcons;
 import com.jhw.swing.models.clean.CleanCRUDInputView;
 import java.util.Map;
@@ -32,7 +36,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
     private void initComponents() {
         setHeader("Crear Tipo de gasto", "Editar Tipo de gasto");
 
-        textFieldNombre = new com.jhw.swing.material.components.textfield._MaterialTextFieldIcon();
+        textFieldNombre = MaterialTextFactory.buildIcon();
         textFieldNombre.setLabel("Nombre");
         textFieldNombre.setHint("Nombre del gasto");
         textFieldNombre.setIcon(MaterialIcons.PRIORITY_HIGH);
@@ -46,7 +50,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
 
         formaPagoICBS = new FormaPagoICBS();
 
-        textAreaDescripcion = new com.jhw.swing.material.components.textarea.prepared._MaterialTextAreaDescripcion();
+        textAreaDescripcion  = MaterialTextAreaFactory.buildDescripcion();
 
         VerticalLayoutContainer.builder vlc = VerticalLayoutContainer.builder();
         vlc.add(textFieldNombre);
@@ -59,11 +63,11 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
     }
 
     // Variables declaration - do not modify
-    private com.jhw.swing.material.components.textfield._MaterialTextFieldIcon textFieldNombre;
+    private MaterialTextFieldIcon textFieldNombre;
     private com.jhw.gestion.modules.contabilidad.ui.moneda.MonedaICBS monedaICBS;
     private TipoOperacionContableICBS tipoOpICBS;
     private FormaPagoICBS formaPagoICBS;
-    private com.jhw.swing.material.components.textarea.prepared._MaterialTextAreaDescripcion textAreaDescripcion;
+    private MaterialTextArea textAreaDescripcion;
     // End of variables declaration                   
 
     @Override
