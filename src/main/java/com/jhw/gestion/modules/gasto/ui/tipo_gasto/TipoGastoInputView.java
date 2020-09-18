@@ -6,7 +6,7 @@ import com.jhw.gestion.modules.gasto.core.domain.TipoGastoDomain;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import com.jhw.swing.material.components.container.layout.VerticalLayoutContainer;
 import com.jhw.swing.material.components.textarea.MaterialTextArea;
-import com.jhw.swing.material.components.textarea.MaterialTextAreaFactory;
+import com.jhw.swing.prepared.textarea.MaterialPreparedTextAreaFactory;
 import com.jhw.swing.material.components.textfield.MaterialTextFactory;
 import com.jhw.swing.material.components.textfield.MaterialTextFieldIcon;
 import com.jhw.swing.material.standards.MaterialIcons;
@@ -50,7 +50,7 @@ public class TipoGastoInputView extends CleanCRUDInputView<TipoGastoDomain> {
 
         formaPagoICBS = new FormaPagoICBS();
 
-        textAreaDescripcion  = MaterialTextAreaFactory.buildDescripcion();
+        textAreaDescripcion  = MaterialPreparedTextAreaFactory.buildDescripcion();
 
         VerticalLayoutContainer.builder vlc = VerticalLayoutContainer.builder();
         vlc.add(textFieldNombre);
