@@ -24,6 +24,7 @@ dependencies {
     implementation project(':material-notification')    
     implementation project(':material-chart')
     implementation project(':material-model')
+    implementation project(':material-swing-preparated')
     
     implementation project(':module-default-config')
     implementation project(':module-licence')
