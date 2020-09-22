@@ -28,4 +28,8 @@ public class TipoGastoICBS extends InputComboBoxSelection<TipoGastoDomain> {
         return TipoGastoInputView.from();
     }
 
+    @Override
+    protected void addPropertyChange() {
+        GastoSwingModule.tipoGastoUC.addPropertyChangeListener(this);
+    }
 }

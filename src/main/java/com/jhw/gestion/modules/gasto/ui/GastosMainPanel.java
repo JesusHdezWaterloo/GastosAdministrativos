@@ -14,7 +14,6 @@ public class GastosMainPanel extends _PanelTransparent implements Update {
 
     public GastosMainPanel() {
         initComponents();
-        personalize();
     }
 
     private void initComponents() {
@@ -33,10 +32,6 @@ public class GastosMainPanel extends _PanelTransparent implements Update {
     @Override
     public void update() {
         tipoGastoDetailView.update();
+        gastoDetailView.update();
     }
-
-    private void personalize() {
-        tipoGastoDetailView.addPropertyChangeListener(gastoDetailView);//observer para cuando se crea otro gasto
-    }
-
 }
