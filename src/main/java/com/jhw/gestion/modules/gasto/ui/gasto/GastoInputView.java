@@ -110,7 +110,7 @@ public class GastoInputView extends CleanCRUDInputView<GastoDomain> {
     }
 
     private void addListener() {
-        tipoGastoICBS.getComboBox().addActionListener((java.awt.event.ActionEvent evt) -> {
+        tipoGastoICBS.addActionListener((java.awt.event.ActionEvent evt) -> {
             onGastoComboBoxActionPerformed();
         });
     }

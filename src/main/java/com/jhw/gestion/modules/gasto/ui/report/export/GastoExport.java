@@ -5,9 +5,8 @@
  */
 package com.jhw.gestion.modules.gasto.ui.report.export;
 
+import com.jhw.export.excel.ExcelListWriter;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
-
-import com.jhw.excel.utils.ExcelListWriter;
 import com.jhw.gestion.modules.gasto.ui.gasto.GastoDetailView;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyTableComponent;
 import com.jhw.swing.models.utils.DefaultExportableConfig;

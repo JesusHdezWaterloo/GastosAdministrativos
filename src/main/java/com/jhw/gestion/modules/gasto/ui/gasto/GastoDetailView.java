@@ -1,35 +1,27 @@
 package com.jhw.gestion.modules.gasto.ui.gasto;
 
 import com.clean.core.app.services.ExceptionHandler;
-import com.jhw.excel.utils.ExcelListWriter;
 import com.jhw.gestion.modules.gasto.ui.module.GastoSwingModule;
 import java.awt.event.ActionEvent;
-import com.jhw.swing.models.detail._MaterialPanelDetailDragDrop;
 import com.jhw.swing.material.components.table.Column;
-import com.jhw.swing.models.input.dialogs.DialogModelInput;
-import com.jhw.swing.bundles.dialog.DialogPanel;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyCellRender;
 import com.jhw.swing.material.components.table.editors_renders.money.MoneyTableComponent;
 import com.jhw.gestion.modules.gasto.core.domain.GastoDomain;
-import com.jhw.gestion.modules.gasto.ui.report.chart.GastosByTipoChart;
 import com.jhw.gestion.modules.gasto.ui.module.GastoModuleNavigator;
 import com.jhw.gestion.modules.gasto.ui.report.chart.GastosReport;
 import com.jhw.gestion.modules.gasto.ui.report.export.GastoExport;
 import com.jhw.swing.material.components.button._MaterialButtonPopup;
+import com.jhw.swing.models.clean.CleanDetailCRUDDragDrop;
+import com.jhw.swing.models.input.panels.ModelPanel;
 import com.jhw.utils.others.SDF;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.function.BiFunction;
-import javax.swing.AbstractAction;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Workbook;
+import java.util.List;
 
 /**
  *
  * @author Jesús Hernández Barrios (jhernandezb96@gmail.com)
  */
-public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> implements PropertyChangeListener {
+public class GastoDetailView extends CleanDetailCRUDDragDrop<GastoDomain> {
 
     private static final String COL_GASTO = "Gasto";
     private static final String COL_VALOR = "Valor";
@@ -46,10 +38,10 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
                 Column.builder().name(COL_CUENTA).build()
         );
 
-        this.personalize();
     }
 
-    private void personalize() {
+    @Override
+    protected void personalize() {
         setUpEditorsRenders();
 
         this.setHeaderText("Gastos Realizados");
@@ -64,12 +56,8 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
     }
 
     @Override
-    public void update() {
-        try {
-            setCollection(GastoSwingModule.gastoUC.findAll());
-        } catch (Exception e) {
-            ExceptionHandler.handleException(e);
-        }
+    protected List<GastoDomain> getListUpdate() throws Exception {
+        return GastoSwingModule.gastoUC.findAll();
     }
 
     @Override
@@ -82,8 +70,18 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
     }
 
     @Override
-    protected void buttonNuevoActionListener() {
-        new DialogModelInput(this, GastoInputView.from());
+    protected void addPropertyChange() {
+        GastoSwingModule.gastoUC.addPropertyChangeListener(this);
+    }
+
+    @Override
+    protected ModelPanel<GastoDomain> getModelPanelNew() {
+        return GastoInputView.from();
+    }
+
+    @Override
+    protected ModelPanel<GastoDomain> getModelPanelEdit(GastoDomain obj) {
+        return GastoInputView.fromModel(obj);
     }
 
     @Override
@@ -94,11 +92,6 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
             ExceptionHandler.handleException(ex);
         }
         return null;
-    }
-
-    @Override
-    protected void editAction(GastoDomain obj) {
-        new DialogModelInput(this, GastoInputView.fromModel(obj));
     }
 
     @Override
@@ -127,12 +120,4 @@ public class GastoDetailView extends _MaterialPanelDetailDragDrop<GastoDomain> i
         getTable().getColumn(COL_VALOR).setCellRenderer(new MoneyCellRender());
     }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        switch (evt.getPropertyName()) {
-            case "update":
-                update();
-                break;
-        }
-    }
 }
