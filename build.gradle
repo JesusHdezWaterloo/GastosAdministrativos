@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.jhw.gestion.modules.gasto'
+group = 'com.jhw.module.gestion'
 
 repositories {
     jcenter()
@@ -30,7 +30,7 @@ dependencies {
     
     implementation project(':module-util-default_configuration')
     implementation project(':module-util-licence')
-    implementation project(':module-util-my_sql')
+    implementation project(':module-util-mysql')
     
     implementation project(':utils-export')
     implementation project(':utils-files')
