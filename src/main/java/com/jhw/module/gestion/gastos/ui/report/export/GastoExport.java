@@ -34,11 +34,11 @@ public class GastoExport extends DefaultExportableConfig<GastoDomain> {
             obj.getCuadreFk().info().getDocumento(),
             obj.getTipoGastoFk().getNombreGasto(),
             obj.getCuadreFk().info().getFecha(),
-            MoneyTableComponent.from(obj.getValor(), obj.getMonedaFk()),
+            MoneyTableComponent.from(obj.getValor(), obj.getMonedaFk()).toString(),
             obj.getCuadreFk().info().getFormaPagoFk().getNombreFormaPago(),
-            obj.getCuadreFk().getOperacionContableFk().getCuentaFk(),
-            obj.getCuadreFk().getOperacionContableCuadreFk().getCuentaFk(),
-            obj.getCuadreFk().info().getTipoOperacionFk()
+            obj.getCuadreFk().getOperacionContableFk().getCuentaFk().getNombreCuenta(),
+            obj.getCuadreFk().getOperacionContableCuadreFk().getCuentaFk().getNombreCuenta(),
+            obj.getCuadreFk().info().getTipoOperacionFk().getNombreOperacion()
         };
     }
 
