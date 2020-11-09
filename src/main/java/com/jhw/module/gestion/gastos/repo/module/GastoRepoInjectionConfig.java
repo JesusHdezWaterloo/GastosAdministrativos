@@ -8,7 +8,7 @@ import com.jhw.module.gestion.gastos.repo.repo_impl.GastoRepoImpl;
 import com.jhw.module.gestion.gastos.repo.repo_impl.TipoGastoRepoImpl;
 
 /**
- * Configuracion del injection del modulo de gasto-repo.
+ * Configuracion del injection del modulo de Gastos-Repo-Server.
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
