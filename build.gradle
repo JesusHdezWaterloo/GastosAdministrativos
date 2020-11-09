@@ -4,7 +4,7 @@ plugins {
 
 group = 'com.jhw.module.gestion'
 
-version = '1.3.1.SNAPSHOT.20201108'
+version = '2.0.0.SNAPSHOT.20201108'
 
 repositories {
     jcenter()
@@ -13,31 +13,19 @@ repositories {
 
 
 dependencies {
+    compile group: 'org.springframework', name: 'spring-web', version: '5.2.9.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE'
     testImplementation 'junit:junit:4.13'
 
     implementation project(':utils-core')
+    implementation project(':utils-spring')
+    
     implementation project(':clean-core-full')
-    implementation project(':clean-swing')
-    
-    implementation project(':swing-derivable_icons')
-    implementation project(':swing-material-standards')
-    implementation project(':swing-material-core')
-    implementation project(':swing-material-prepared')
-    
-    implementation project(':swing-material-notifications')
-    implementation project(':module-util-personalization')
-    
-    implementation project(':swing-material-chart')
-    implementation project(':swing-material-model')
-    
-    implementation project(':module-util-default_configuration')
-    implementation project(':module-util-licence')
     implementation project(':module-util-mysql')
+    implementation project(':module-gestion-gastos_administrativos-standard')
     
-    implementation project(':utils-export')
-    implementation project(':utils-files')
-    
-    implementation project(':module-gestion-contabilidad_empresarial')
+    implementation project(':module-gestion-contabilidad_empresarial-server')
+    implementation project(':module-gestion-contabilidad_empresarial-standard')
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     
