@@ -1,6 +1,8 @@
 package com.jhw.module.gestion.gastos.core.usecase_impl;
 
 import com.jhw.module.gestion.contabilidad.core.domain.MonedaDomain;
+import com.jhw.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
+import com.jhw.module.gestion.contabilidad.core.usecase_def.MonedaUseCase;
 import com.jhw.module.gestion.contabilidad.core.usecase_impl.DefaultPagableUseCaseImpl;
 import com.jhw.module.gestion.contabilidad.utils.MonedaHandler;
 import com.jhw.module.gestion.gastos.core.domain.GastoDomain;
@@ -23,7 +25,7 @@ public class GastoUseCaseImpl extends DefaultPagableUseCaseImpl<GastoDomain> imp
     @Override
     public HashMap<TipoGastoDomain, BigDecimal> reporteGastadoPorGasto() throws Exception {
         HashMap<TipoGastoDomain, BigDecimal> h = new HashMap<>();
-        MonedaDomain m = MonedaHandler.getMonedaBase();
+        MonedaDomain m = ContabilidadCoreModule.getInstance().getImplementation(MonedaUseCase.class).findMonedaBase();
         if (m == null) {
             return h;
         }
