@@ -5,10 +5,11 @@
  */
 package com.jhw.module.gestion.gastos.rest;
 
+import com.jhw.module.gestion.contabilidad.service.ResourceServiceImplementation;
 import com.jhw.module.gestion.gastos.core.module.*;
 import com.jhw.module.gestion.gastos.core.usecase_def.*;
 import com.jhw.module.gestion.gastos.repo.module.*;
-import com.jhw.module.gestion.gastos.service.ResourceServiceImplementation;
+import com.jhw.module.gestion.gastos.service.ResourceServiceServerImplementation;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,7 +25,9 @@ public class A_ModuleGestionGastos {
     public final static GastoUseCase gastoUC;
 
     static {
+        ResourceServiceServerImplementation.init();
         ResourceServiceImplementation.init();
+
         GastoCoreModule.init(GastoRepoModule.init());
 
         tipoGastoUC = GastoCoreModule.getInstance().getImplementation(TipoGastoUseCase.class);

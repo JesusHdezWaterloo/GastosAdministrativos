@@ -10,15 +10,15 @@ import java.net.MalformedURLException;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class ResourceServiceImplementation implements ResourceService {
+public class ResourceServiceServerImplementation implements ResourceService {
 
-    public static final String RESOURCE_URL = "module_gasto";
+    public static final String RESOURCE_URL = "module_gasto_server";
 
     private final DefaultResourceBundleService resourceService;
 
-    public static ResourceServiceImplementation init() {
+    public static ResourceServiceServerImplementation init() {
         try {
-            ResourceServiceImplementation res = new ResourceServiceImplementation();
+            ResourceServiceServerImplementation res = new ResourceServiceServerImplementation();
             Resource.registerResourceService(res);
             return res;
         } catch (Exception e) {
@@ -26,7 +26,7 @@ public class ResourceServiceImplementation implements ResourceService {
         return null;
     }
 
-    private ResourceServiceImplementation() throws MalformedURLException {
+    private ResourceServiceServerImplementation() throws MalformedURLException {
         resourceService = new DefaultResourceBundleService(
                 ResourceBundleUtils.fromInternalFile(RESOURCE_URL,
                         ResourceBundleUtils.SPANISH));
