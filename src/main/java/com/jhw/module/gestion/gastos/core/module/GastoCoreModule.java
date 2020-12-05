@@ -4,6 +4,8 @@ import com.clean.core.app.modules.AbstractModule;
 import com.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.jhw.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
+import com.jhw.module.gestion.gastos.repo.module.GastoRepoModule;
 
 /**
  * Modulo de Gastos-Core-Server
@@ -23,6 +25,26 @@ public class GastoCoreModule extends DefaultAbstractModule {
         return INSTANCE;
     }
 
+    public static GastoCoreModule init() {
+        if (INSTANCE != null) {
+            return INSTANCE;
+        }
+        ContabilidadCoreModule.init();//inicia el modulo de contabilidad del que depende
+
+        INSTANCE = new GastoCoreModule();
+        INSTANCE.registerModule(GastoRepoModule.init());
+
+        return getInstance();
+    }
+
+    /**
+     * Usar init() sin repo por parametro para usar el repo por defecto
+     *
+     * @param repoModule
+     * @return
+     * @deprecated
+     */
+    @Deprecated
     public static GastoCoreModule init(AbstractModule repoModule) {
         INSTANCE = new GastoCoreModule();
         INSTANCE.registerModule(repoModule);

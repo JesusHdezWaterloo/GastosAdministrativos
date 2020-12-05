@@ -28,7 +28,7 @@ public class A_ModuleGestionGastos {
         ResourceServiceServerImplementation.init();
         ResourceServiceImplementation.init();
 
-        GastoCoreModule.init(GastoRepoModule.init());
+        GastoCoreModule.init();
 
         tipoGastoUC = GastoCoreModule.getInstance().getImplementation(TipoGastoUseCase.class);
         gastoUC = GastoCoreModule.getInstance().getImplementation(GastoUseCase.class);
