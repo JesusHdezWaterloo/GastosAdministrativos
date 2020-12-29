@@ -4,7 +4,7 @@ plugins {
 
 group = 'com.jhw.module.gestion'
 
-version = '2.1.0.SNAPSHOT.20201219'
+version = '2.2.0.SNAPSHOT.20201228'
 
 repositories {
     jcenter()
@@ -26,6 +26,8 @@ dependencies {
     
     implementation project(':module-gestion-contabilidad_empresarial-server')
     implementation project(':module-gestion-contabilidad_empresarial-standard')
+    
+    implementation project(':module-util-licence-server')
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     

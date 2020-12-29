@@ -1,2 +1,0 @@
-    -   GastoInputView:
-            setTipoGasto no reinicie el nombre

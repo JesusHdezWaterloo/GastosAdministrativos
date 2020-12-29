@@ -20,3 +20,9 @@ project(':module-gestion-contabilidad_empresarial-standard').projectDir = "E:\\T
 
 include ':module-gestion-contabilidad_empresarial-server'
 project(':module-gestion-contabilidad_empresarial-server').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-gestion-contabilidad_empresarial-server" as File
+
+include ':module-util-licence-server'
+project(':module-util-licence-server').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-util-licence-server" as File
+
+include ':module-util-licence-standard'
+project(':module-util-licence-standard').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-util-licence-standard" as File
