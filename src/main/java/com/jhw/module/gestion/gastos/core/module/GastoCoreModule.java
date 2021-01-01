@@ -1,10 +1,10 @@
 package com.jhw.module.gestion.gastos.core.module;
 
-import com.clean.core.app.modules.AbstractModule;
-import com.clean.core.app.modules.DefaultAbstractModule;
+import com.root101.clean.core.app.modules.AbstractModule;
+import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.jhw.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
+import com.root101.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
 import com.jhw.module.gestion.gastos.repo.module.GastoRepoModule;
 
 /**

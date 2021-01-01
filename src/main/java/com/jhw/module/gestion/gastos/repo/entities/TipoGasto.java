@@ -5,9 +5,9 @@
  */
 package com.jhw.module.gestion.gastos.repo.entities;
 
-import com.jhw.module.gestion.contabilidad.repo.entities.FormaPago;
-import com.jhw.module.gestion.contabilidad.repo.entities.Moneda;
-import com.jhw.module.gestion.contabilidad.repo.entities.TipoOperacionContable;
+import com.root101.module.gestion.contabilidad.repo.entities.FormaPago;
+import com.root101.module.gestion.contabilidad.repo.entities.Moneda;
+import com.root101.module.gestion.contabilidad.repo.entities.TipoOperacionContable;
 import com.jhw.module.gestion.gastos.repo.utils.ResourcesGastos;
 import java.io.Serializable;
 import javax.persistence.Basic;

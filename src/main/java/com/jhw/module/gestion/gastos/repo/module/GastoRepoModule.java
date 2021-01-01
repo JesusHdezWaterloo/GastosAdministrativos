@@ -1,6 +1,6 @@
 package com.jhw.module.gestion.gastos.repo.module;
 
-import com.clean.core.app.modules.DefaultAbstractModule;
+import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.jhw.module.gestion.gastos.repo.utils.ResourcesGastos;

@@ -5,7 +5,7 @@
  */
 package com.jhw.module.gestion.gastos.rest;
 
-import com.jhw.module.gestion.contabilidad.service.ResourceServiceImplementation;
+import com.root101.module.gestion.contabilidad.service.ResourceServiceImplementation;
 import com.jhw.module.gestion.gastos.core.module.*;
 import com.jhw.module.gestion.gastos.core.usecase_def.*;
 import com.jhw.module.gestion.gastos.repo.module.*;

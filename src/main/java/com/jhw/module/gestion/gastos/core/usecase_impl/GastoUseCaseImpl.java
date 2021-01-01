@@ -1,10 +1,10 @@
 package com.jhw.module.gestion.gastos.core.usecase_impl;
 
-import com.jhw.module.gestion.contabilidad.core.domain.MonedaDomain;
-import com.jhw.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
-import com.jhw.module.gestion.contabilidad.core.usecase_def.MonedaUseCase;
-import com.jhw.module.gestion.contabilidad.core.usecase_impl.DefaultPagableUseCaseImpl;
-import com.jhw.module.gestion.contabilidad.utils.MonedaHandler;
+import com.root101.module.gestion.contabilidad.core.domain.MonedaDomain;
+import com.root101.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
+import com.root101.module.gestion.contabilidad.core.usecase_def.MonedaUseCase;
+import com.root101.module.gestion.contabilidad.core.usecase_impl.DefaultPagableUseCaseImpl;
+import com.root101.module.gestion.contabilidad.utils.MonedaHandler;
 import com.jhw.module.gestion.gastos.core.domain.GastoDomain;
 import com.jhw.module.gestion.gastos.core.domain.TipoGastoDomain;
 import com.jhw.module.gestion.gastos.core.module.GastoCoreModule;

@@ -4,7 +4,7 @@ import com.jhw.module.gestion.gastos.core.domain.TipoGastoDomain;
 import com.jhw.module.gestion.gastos.core.repo_def.TipoGastoRepo;
 import com.jhw.module.gestion.gastos.repo.entities.TipoGasto;
 import com.jhw.module.gestion.gastos.repo.utils.ResourcesGastos;
-import com.jhw.utils.jpa.JPACleanCRUDRepo;
+import com.root101.repo.jpa.JPACleanCRUDRepo;
 
 public class TipoGastoRepoImpl extends JPACleanCRUDRepo<TipoGastoDomain, TipoGasto> implements TipoGastoRepo {
 

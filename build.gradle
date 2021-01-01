@@ -20,7 +20,7 @@ dependencies {
     implementation project(':utils-core')
     implementation project(':utils-spring')
     
-    implementation project(':clean-core-full')
+    implementation project(':clean-core')
     implementation project(':module-util-mysql')
     implementation project(':module-gestion-gastos_administrativos-standard')
     
