@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class A_ModuleGestionGastos {
 
-    public static final String BASE_PACKAGE = "com.jhw.module.gestion.gastos";
+    public static final String BASE_PACKAGE = "com.root101.module.gestion.gastos";
 
     public final static TipoGastoUseCase tipoGastoUC;
     public final static GastoUseCase gastoUC;

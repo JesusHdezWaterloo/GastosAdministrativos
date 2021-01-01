@@ -27,7 +27,7 @@ import javax.persistence.Persistence;
  */
 public class ResourcesGastos {
 
-    public static final String SCHEMA = "sigecon_gasto";
+    public static final String SCHEMA = "root101_sigecon_gasto";
 
     public static EntityManagerFactory EMF;
 
