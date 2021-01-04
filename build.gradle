@@ -27,7 +27,7 @@ dependencies {
     implementation project(':module-gestion-contabilidad_empresarial-server')
     implementation project(':module-gestion-contabilidad_empresarial-standard')
     
-    implementation project(':module-util-licence-server')
+    implementation project(':module-control-licence-server')
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     
