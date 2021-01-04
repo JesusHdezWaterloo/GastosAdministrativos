@@ -20,8 +20,9 @@ import com.root101.clean.core.app.modules.AbstractModule;
 import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.root101.module.gestion.contabilidad.core.module.ContabilidadCoreModule;
-import com.root101.module.gestion.gastos.repo.module.GastoRepoModule;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.clean.core.exceptions.AlreadyInitModule;
+import static com.root101.module.gestion.gastos.service.ResourceKeys.KEY_MODULE_NAME_GASTOS;
 
 /**
  *
@@ -36,21 +37,9 @@ public class GastoCoreModule extends DefaultAbstractModule {
 
     public static GastoCoreModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Gastos-Core-Server no se ha inicializado");
+            throw new AlreadyInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
         }
         return INSTANCE;
-    }
-
-    public static GastoCoreModule init() {
-        if (INSTANCE != null) {
-            return INSTANCE;
-        }
-        ContabilidadCoreModule.init();//inicia el modulo de contabilidad del que depende
-
-        INSTANCE = new GastoCoreModule();
-        INSTANCE.registerModule(GastoRepoModule.init());
-
-        return getInstance();
     }
 
     /**
@@ -60,8 +49,10 @@ public class GastoCoreModule extends DefaultAbstractModule {
      * @return
      * @deprecated
      */
-    @Deprecated
     public static GastoCoreModule init(AbstractModule repoModule) {
+        if (INSTANCE != null) {
+            throw new AlreadyInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
+        }
         INSTANCE = new GastoCoreModule();
         INSTANCE.registerModule(repoModule);
         return getInstance();
