@@ -16,7 +16,7 @@
  */
 package com.root101.module.gestion.gastos.rest;
 
-import static com.root101.module.gestion.gastos.core.ModuleGestionGastosConstants.*;
+import static com.root101.module.gestion.gastos.rest.ModuleGestionGastosRESTConstants.*;
 import com.root101.module.gestion.gastos.core.domain.*;
 import com.root101.module.gestion.gastos.core.usecase_def.*;
 import com.jhw.utils.spring.server.*;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = TIPO_GASTO_GENERAL_PATH)
 public class TipoGastoRESTService extends RESTServiceTemplate<TipoGastoDomain> implements TipoGastoUseCase {
 
-    private final TipoGastoUseCase tipoGastoUC = A_ModuleGestionGastos.tipoGastoUC;
+    private final TipoGastoUseCase tipoGastoUC = A_ModuleGestionGastosRESTConfig.tipoGastoUC;
 
     public TipoGastoRESTService() {
         setUseCase(tipoGastoUC);
