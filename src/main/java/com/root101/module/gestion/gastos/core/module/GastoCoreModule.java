@@ -22,6 +22,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.root101.clean.core.domain.services.ResourceHandler;
 import com.root101.clean.core.exceptions.AlreadyInitModule;
+import com.root101.clean.core.exceptions.NotInitModule;
 import static com.root101.module.gestion.gastos.service.ResourceKeys.KEY_MODULE_NAME_GASTOS;
 
 /**
@@ -37,7 +38,7 @@ public class GastoCoreModule extends DefaultAbstractModule {
 
     public static GastoCoreModule getInstance() {
         if (INSTANCE == null) {
-            throw new AlreadyInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
+            throw new NotInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
         }
         return INSTANCE;
     }

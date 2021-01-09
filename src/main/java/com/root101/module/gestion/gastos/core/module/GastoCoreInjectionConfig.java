@@ -32,7 +32,7 @@ public class GastoCoreInjectionConfig extends LicenceInjectionConfig {
     @Override
     protected void configure() {
         super.configure();//configura la licencia
-        
+
         bind(GastoUseCase.class).to(GastoUseCaseImpl.class).in(Singleton.class);
         bind(TipoGastoUseCase.class).to(TipoGastoUseCaseImpl.class).in(Singleton.class);
     }
