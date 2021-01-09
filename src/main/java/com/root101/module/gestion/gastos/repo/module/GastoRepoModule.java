@@ -19,7 +19,11 @@ package com.root101.module.gestion.gastos.repo.module;
 import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.clean.core.exceptions.AlreadyInitModule;
+import com.root101.clean.core.exceptions.NotInitModule;
 import com.root101.module.gestion.gastos.repo.utils.ResourcesGastos;
+import static com.root101.module.gestion.gastos.service.ResourceKeys.KEY_MODULE_NAME_GASTOS;
 
 /**
  *
@@ -38,12 +42,15 @@ public class GastoRepoModule extends DefaultAbstractModule {
 
     public static GastoRepoModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Gastos Repo Server no se ha inicializado");
+            throw new NotInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
         }
         return INSTANCE;
     }
 
     public static GastoRepoModule init() {
+        if (INSTANCE != null) {
+            throw new AlreadyInitModule(ResourceHandler.getString(KEY_MODULE_NAME_GASTOS));
+        }
         INSTANCE = new GastoRepoModule();
         return getInstance();
     }

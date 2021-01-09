@@ -19,6 +19,7 @@ package com.root101.module.gestion.gastos.rest;
 import com.root101.module.gestion.contabilidad.service.ResourceServiceImplementation;
 import com.root101.module.gestion.gastos.core.module.*;
 import com.root101.module.gestion.gastos.core.usecase_def.*;
+import com.root101.module.gestion.gastos.repo.module.GastoRepoModule;
 import com.root101.module.gestion.gastos.service.ResourceServiceServerImplementation;
 import org.springframework.stereotype.Component;
 
@@ -28,9 +29,10 @@ import org.springframework.stereotype.Component;
  * @author JesusHdezWaterloo@Github
  */
 @Component
-public class A_ModuleGestionGastos {
+public class A_ModuleGestionGastosRESTConfig {
 
-    public static final String BASE_PACKAGE = "com.root101.module.gestion.gastos";
+    //No puede ser con getPackage().getName() xq el annotation necesita una constante
+    public static final String BASE_PACKAGE = "com.root101.module.gestion.gastos.rest";
 
     public final static TipoGastoUseCase tipoGastoUC;
     public final static GastoUseCase gastoUC;
@@ -39,7 +41,7 @@ public class A_ModuleGestionGastos {
         ResourceServiceServerImplementation.init();
         ResourceServiceImplementation.init();
 
-        GastoCoreModule.init();
+        GastoCoreModule.init(GastoRepoModule.init());
 
         tipoGastoUC = GastoCoreModule.getInstance().getImplementation(TipoGastoUseCase.class);
         gastoUC = GastoCoreModule.getInstance().getImplementation(GastoUseCase.class);

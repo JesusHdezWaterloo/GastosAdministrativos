@@ -14,26 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.root101.module.gestion.gastos.rest;
-
-import com.root101.spring.server.RESTServiceTemplate;
-import static com.root101.module.gestion.gastos.rest.ModuleGestionGastosRESTConstants.*;
-import com.root101.module.gestion.gastos.core.domain.*;
-import com.root101.module.gestion.gastos.core.usecase_def.*;
-import org.springframework.web.bind.annotation.*;
+package com.root101.module.gestion.gastos.service;
 
 /**
  *
  * @author Root101 (jhernandezb96@gmail.com, +53-5-426-8660)
  * @author JesusHdezWaterloo@Github
  */
-@RestController
-@RequestMapping(value = TIPO_GASTO_GENERAL_PATH)
-public class TipoGastoRESTService extends RESTServiceTemplate<TipoGastoDomain> implements TipoGastoUseCase {
+public class ResourceKeys {
 
-    private final TipoGastoUseCase tipoGastoUC = A_ModuleGestionGastosRESTConfig.tipoGastoUC;
-
-    public TipoGastoRESTService() {
-        setUseCase(tipoGastoUC);
-    }
+    public static final String KEY_MODULE_NAME_GASTOS = "com.root101.module.gestion.gastos.name";
 }

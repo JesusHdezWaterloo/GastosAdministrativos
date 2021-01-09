@@ -4,7 +4,7 @@ plugins {
 
 group = 'com.root101.module.gestion'
 
-version = '2.9.9.SNAPSHOT.20201231'
+version = '3.0.0.SNAPSHOT.20210109'
 
 repositories {
     jcenter()
@@ -27,7 +27,7 @@ dependencies {
     implementation project(':module-gestion-contabilidad_empresarial-server')
     implementation project(':module-gestion-contabilidad_empresarial-standard')
     
-    implementation project(':module-util-licence-server')
+    implementation project(':module-control-licence-server')
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     
@@ -37,5 +37,5 @@ dependencies {
     
     //injection
     compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
-    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    
 }
