@@ -20,7 +20,7 @@ import com.root101.module.gestion.gastos.core.usecase_def.TipoGastoUseCase;
 import com.root101.module.gestion.gastos.core.usecase_def.GastoUseCase;
 import com.google.inject.Singleton;
 import com.root101.module.gestion.gastos.core.usecase_impl.*;
-import com.jhw.module.util.licence.core.injection.LicenceInjectionConfig;
+import com.root101.module.control.licence.core.injection.LicenceInjectionConfig;
 
 /**
  *
@@ -32,7 +32,7 @@ public class GastoCoreInjectionConfig extends LicenceInjectionConfig {
     @Override
     protected void configure() {
         super.configure();//configura la licencia
-        
+
         bind(GastoUseCase.class).to(GastoUseCaseImpl.class).in(Singleton.class);
         bind(TipoGastoUseCase.class).to(TipoGastoUseCaseImpl.class).in(Singleton.class);
     }

@@ -16,10 +16,10 @@
  */
 package com.root101.module.gestion.gastos.rest;
 
-import static com.root101.module.gestion.gastos.core.ModuleGestionGastosConstants.*;
+import com.root101.spring.server.RESTServiceTemplate;
+import static com.root101.module.gestion.gastos.rest.ModuleGestionGastosRESTConstants.*;
 import com.root101.module.gestion.gastos.core.domain.*;
 import com.root101.module.gestion.gastos.core.usecase_def.*;
-import com.jhw.utils.spring.server.*;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = GASTOS_GASTOS_GENERAL_PATH)
 public class GastoRESTService extends RESTServiceTemplate<GastoDomain> implements GastoUseCase {
 
-    private final GastoUseCase gastoUC = A_ModuleGestionGastos.gastoUC;
+    private final GastoUseCase gastoUC = A_ModuleGestionGastosRESTConfig.gastoUC;
 
     public GastoRESTService() {
         setUseCase(gastoUC);
